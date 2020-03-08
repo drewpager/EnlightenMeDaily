@@ -1,15 +1,27 @@
-import express from 'express';
+import express, { Application } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { typeDefs, resolvers } from './graphql';
-import { quotes } from './quotes';
-import bodyParser from 'body-parser';
+import { connectDatabase } from './database';
 
-const app = express();
-const server = new ApolloServer({ typeDefs, resolvers });
-const port = 9000;
+const port = process.env.PORT;
 
-server.applyMiddleware({app, path: '/api'});
+const mount = async (app: Application) => {
+  const db = await connectDatabase();
+  const server = new ApolloServer({ 
+    typeDefs, 
+    resolvers,
+    context: () => ({ db }) 
+  });
 
-app.listen(port);
+  server.applyMiddleware({app, path: '/api'});
 
-console.log(`Express is running on port: ${port}`);
+  app.listen(port);
+  console.log(`Express is running on port: ${port}`);
+
+  const quotes = await db.quotes.find({}).toArray();
+  console.log(quotes);
+} 
+
+mount(express());
+
+
