@@ -5,6 +5,8 @@ import { connectDatabase } from './database';
 
 const port = process.env.PORT;
 
+// create a mount function to await MongoClient connect, ApolloServer, middleware, and port. 
+
 const mount = async (app: Application) => {
   const db = await connectDatabase();
   const server = new ApolloServer({ 
@@ -22,6 +24,7 @@ const mount = async (app: Application) => {
   console.log(quotes);
 } 
 
+// invoke the mount function calling an instantiation of Express
 mount(express());
 
 
