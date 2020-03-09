@@ -1,9 +1,9 @@
 import React from 'react';
+import './styles/index.css';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import './index.css';
-// import App from './App';
+import './styles/index.css';
 import { Quotes } from './sections/Quotes';
 import * as serviceWorker from './serviceWorker';
 
@@ -13,7 +13,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
 <ApolloProvider client={client}>
-  <Quotes title="Quotes Page" />
+  <Quotes title="Drew's Favorite Quotes" />
 </ApolloProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
