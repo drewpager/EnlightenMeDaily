@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { server } from '../../lib/api';
+import React from 'react';
+import { gql } from 'apollo-boost';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { 
   QuotesData, 
-  Quote,
   DeleteQuoteData, 
   DeleteQuoteVariables 
 } from './types';
 
-const QUOTES = `
+const QUOTES = gql`
   query Quotes {
     quotes {
       id
@@ -20,7 +20,7 @@ const QUOTES = `
   }
 `;
 
-const DELETE_QUOTE = `
+const DELETE_QUOTE = gql`
   mutation DeleteQuote($id: ID!) {
     deleteQuote(id: $id) {
       id
@@ -33,28 +33,47 @@ interface Props {
 }
 
 export const Quotes = ({ title }: Props) => {
-  const [quotes, setQuote] = useState<Quote[] | null>(null);
-  const fetchQuotes = async () => {
-    const { data } = await server.fetch<QuotesData>({ query: QUOTES });
-    setQuote(data.quotes);
+  const { data, refetch, loading, error } = useQuery<QuotesData>(QUOTES);
+
+  const [
+    deleteQuote, 
+    { loading: deleteQuoteLoading, error: deleteQuoteError }
+  ] = useMutation<DeleteQuoteData, DeleteQuoteVariables>(DELETE_QUOTE);
+
+  const handleDeleteQuote = async (id: string) => {
+    await deleteQuote({ variables: { id }});
+    refetch();
   }
 
-  const deleteQuote = async (id: string) => {
-    const { data } = await server.fetch<DeleteQuoteData, DeleteQuoteVariables>({
-      query: DELETE_QUOTE,
-      variables: {
-        id
-      }
-    });
-    fetchQuotes();
+  if (loading) {
+    return (
+      <div>
+        <h2>{title}</h2>
+        <h2>Loading...</h2>
+      </div>
+    );
   }
+
+  if (error) {
+    return <h2>Uh oh! Something went wrong</h2>;
+  }
+  
+  const quotes = data ? data.quotes : null;
+
+  const deleteQuoteLoadingElement = deleteQuoteLoading ? (
+    <h4>Deletion in progress...</h4>
+    ) : null;
+
+  const deleteQuoteErrorElement = deleteQuoteError ? (
+    <h4>Uh Oh! Failed to delete item. Please try again!</h4>
+  ) : null;
 
   const quotesList = quotes ? (
     <ul>
       {quotes.map(quote => {
         return (
         <li key={quote.id}>{quote.quote}{" "}
-          <button onClick={() => deleteQuote(quote.id)}>Delete</button>
+          <button onClick={() => handleDeleteQuote(quote.id)}>Delete</button>
         </li>
         );
       })}
@@ -64,7 +83,8 @@ export const Quotes = ({ title }: Props) => {
     <div>
       <h2>{title}</h2>
       {quotesList}
-      <button onClick={fetchQuotes}>Fetch Quotes!</button>
+      {deleteQuoteLoadingElement}
+      {deleteQuoteErrorElement}
     </div>
   );
 }
