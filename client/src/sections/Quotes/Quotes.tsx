@@ -1,11 +1,8 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { 
-  QuotesData, 
-  DeleteQuoteData, 
-  DeleteQuoteVariables 
-} from './types';
+import { Quotes as QuotesData } from './__generated__/Quotes';
+import { DeleteQuote as DeleteQuoteData, DeleteQuoteVariables } from './__generated__/DeleteQuote';
 
 const QUOTES = gql`
   query Quotes {
