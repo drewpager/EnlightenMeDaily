@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import { ObjectId } from 'mongodb';
 import { connectDatabase } from '../src/database';
-import { Quote } from '../src/lib/type';
+import { Quote, QuoteType, User } from '../src/lib/type';
 
 const seed = async () => {
   try {
@@ -16,7 +16,8 @@ const seed = async () => {
         author: "René Descartes",
         category: "philosophy",
         period: 1500,
-        image: "https://images.unsplash.com/photo-1509029032154-54ba8b3216d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+        image: "https://images.unsplash.com/photo-1509029032154-54ba8b3216d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+        type: QuoteType.Quote
       },
       {
         _id: new ObjectId(),
@@ -24,7 +25,8 @@ const seed = async () => {
         author: "US Military Adage",
         category: "philosophy",
         period: 1900,
-        image: "https://images.unsplash.com/photo-1508530786855-dfea35260b8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" 
+        image: "https://images.unsplash.com/photo-1508530786855-dfea35260b8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        type: QuoteType.Quote
       },
       {
         _id: new ObjectId(), 
@@ -32,7 +34,8 @@ const seed = async () => {
         author: "Yoda",
         category: "philosophy",
         period: 1980,
-        image: "https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80g"
+        image: "https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80g",
+        type: QuoteType.Quote
       },
       {
         _id: new ObjectId(),
@@ -40,12 +43,47 @@ const seed = async () => {
         author: "Brian Tracy",
         category: "motivation",
         period: 2000,
-        image: "https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80"
+        image: "https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
+        type: QuoteType.Quote
       }
+    ];
+
+    const users: User[] = [
+      {
+        _id: "5d378db94e84753160e08b55",
+        token: "token_************",
+        name: "Jimmy Johns",
+        avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+        contact: "jimmy.j.johns@yahoo.com",
+        bookmarkings: [],
+        quotes: [
+          new ObjectId("5d378db94e84753160e08b31"),
+          new ObjectId("5d378db94e84753160e08b4b"),
+          new ObjectId("5d378db94e84753160e08b4c")
+        ]
+      },
+      {
+        _id: "5d378db94e84753160e08b56",
+        token: "token_************",
+        name: "Leslie Pierce",
+        avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+        contact: "leslie.pierce@yahoo.com",
+        bookmarkings: [],
+        quotes: [
+          new ObjectId("5d378db94e84753160e08b32"),
+          new ObjectId("5d378db94e84753160e08b4a"),
+          new ObjectId("5d378db94e84753160e08b4d")
+        ]
+      } 
     ];
     for (const quote of quotes) {
       await db.quotes.insertOne(quote);
     }
+
+    for (const user of users) {
+      await db.users.insertOne(user);
+    }
+    
     console.log(`[seed]: success`)
   } catch (error) {
     throw new Error(`Failed to seed Database: ${error}`)

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "seed": "ts-node temp/seed.ts",
+    "clear": "ts-node temp/clear.ts",
     "build": "tsc -p ./"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "googleapis": "^47.0.0",
     "lodash.merge": "^4.6.2",
     "mongodb": "^3.5.4"
   },
