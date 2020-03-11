@@ -24,6 +24,13 @@ export interface User {
   quotes: ObjectId[];
 }
 
+export interface Viewer {
+  _id?: string;
+  token?: string;
+  avatar?: string;
+  didRequest: boolean;
+}
+
 export interface Bookmarking {
   _id: ObjectId;
   quote: ObjectId;
