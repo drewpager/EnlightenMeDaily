@@ -4,7 +4,7 @@ import { LogInArgs } from './types';
 import { Google } from '../../../lib/api';
 import crypto from 'crypto';
 
-const LogInViaGoogle = (
+const LogInViaGoogle = async (
   code: string, 
   token: string, 
   db: Database
@@ -32,10 +32,13 @@ const LogInViaGoogle = (
 
   const updateRes = await db.users.findOneAndUpdate(
     { _id: userId }, 
-    { $set: {
-      name: userNames,
-      avatar: userAvatar,
-      contact: userEmail
+    { 
+      $set: {
+        name: userNames,
+        avatar: userAvatar,
+        contact: userEmail,
+        token
+      }
     },
     { returnOriginal: false }
   );
@@ -55,6 +58,7 @@ const LogInViaGoogle = (
     
     viewer = insertResult.ops[0];
   }
+  return viewer;
 }
 
 export const viewerResolvers: IResolvers = {
