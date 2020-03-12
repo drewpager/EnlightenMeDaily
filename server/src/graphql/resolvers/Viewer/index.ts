@@ -25,6 +25,36 @@ const LogInViaGoogle = (
     : null;
   const userAvatar = userPhotosList && userPhotosList[0].url ? userPhotosList[0].url : null;
   const userEmail = userEmailList && userEmailList[0].value ? userEmailList[0].value : null;
+
+  if (!userNames || !userId || !userAvatar || !userEmail) {
+    throw new Error('Google login error');
+  }
+
+  const updateRes = await db.users.findOneAndUpdate(
+    { _id: userId }, 
+    { $set: {
+      name: userNames,
+      avatar: userAvatar,
+      contact: userEmail
+    },
+    { returnOriginal: false }
+  );
+
+  let viewer = updateRes.value;
+
+  if (!viewer) {
+    const insertResult = await db.users.insertOne({
+      _id: userId,
+      token,
+      name: userNames,
+      avatar: userAvatar,
+      contact: userEmail,
+      bookmarkings: [],
+      quotes: []
+    });
+    
+    viewer = insertResult.ops[0];
+  }
 }
 
 export const viewerResolvers: IResolvers = {
@@ -65,7 +95,11 @@ export const viewerResolvers: IResolvers = {
       }
     },
     logOut: () => {
-      return 'Mutation.logOut'
+      try {
+        return { didRequest: true };
+      } catch (error) {
+        throw new Error(`failed to log out of Google: ${error}`);
+      }
     }
   },
   Viewer: {
