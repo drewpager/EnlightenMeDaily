@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import compression from 'compression';
 import { typeDefs, resolvers } from './graphql';
 import { connectDatabase } from './database';
 
@@ -16,6 +17,9 @@ const mount = async (app: Application) => {
   });
 
   server.applyMiddleware({app, path: '/api'});
+  app.use(compression());
+  app.use(express.static(`${__dirname}/client`));
+  app.get('/*', (_req, res) => res.sendFile(`${__dirname}/client/index.html`));
 
   app.listen(port);
   console.log(`Express is running on port: ${port}`);
