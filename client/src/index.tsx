@@ -28,9 +28,9 @@ const App = () => {
   <Router>
     <Layout id="app">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Landing} />
         <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
-        <Route exact path="/landing" component={Landing} />
+        <Route exact path="/Home" component={Home} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/quote/:id" component={Quote} />
         <Route exact path="/quotes/:category?" component={Quotes} />
