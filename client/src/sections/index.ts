@@ -4,3 +4,5 @@ export * from './User';
 export * from './NotFound';
 export * from './Home';
 export * from './Create';
+export * from './Login';
+export * from './Landing';

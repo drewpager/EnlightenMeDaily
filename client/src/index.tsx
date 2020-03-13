@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/index.css';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import './styles/index.css';
-import { Home, Create, Quote, Quotes, NotFound, User } from './sections';
+import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing } from './sections';
 import * as serviceWorker from './serviceWorker';
+import { Layout } from 'antd';
+import { Viewer } from './lib/types';
 
 const client = new ApolloClient({
   uri: '/api'
 });
 
+const initialViewer = {
+  _id: null,
+  token: null,
+  avatar: null,
+  didRequest: false
+}
+
 const App = () => {
+  const [viewer, setViewer] = useState<Viewer>(initialViewer);
+
   return (
   <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/create" component={Create} />
-      <Route exact path="/quote/:id" component={Quote} />
-      <Route exact path="/quotes/:category?" component={Quotes} />
-      <Route exact path="/user/:id" component={User} />
-      <Route component={NotFound} />
-    </Switch>
+    <Layout id="app">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
+        <Route exact path="/landing" component={Landing} />
+        <Route exact path="/create" component={Create} />
+        <Route exact path="/quote/:id" component={Quote} />
+        <Route exact path="/quotes/:category?" component={Quotes} />
+        <Route exact path="/user/:id" component={User} />
+        <Route component={NotFound} />
+      </Switch>
+    </Layout>
   </Router>
   );
 }

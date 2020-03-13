@@ -11,6 +11,18 @@
     padding: 0;
   }
 }
+.landing-header {
+  color: #1d226c;
+  font-size: xx-large;
+}
+.landing-header__logo {
+  display: inline-block;
+  margin-top: 20px;
+  align-items: center;
+}
+.landing-header__title {
+  text-align: center;
+}
 .app-header {
   display: flex;
   background: #fff;
