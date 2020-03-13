@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "motivational quotes ",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "engines": {
     "node": "10.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "antd": "^4.0.2",
