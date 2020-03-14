@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Layout, Typography, Form, Input, Button } from 'antd';
+import { Layout, Typography, Form, Input, Button } from 'antd';
 import Icon from '@ant-design/icons';
 
 const headSvg = () => (
