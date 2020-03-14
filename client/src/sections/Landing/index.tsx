@@ -15,21 +15,21 @@ const { Title, Text } = Typography;
 
 export const Landing = () => {
   return (
-    <div className="landing-header__title">
-      <HeadIcon style={{ fontSize: '50px' }} className="landing-header__logo" />
-      <Title>Enlighten Me Daily®</Title>
-      <Text strong>Sign Up For Our Newsletter</Text>
-      <Form style={{marginTop: "20px"}}>
-        <Form.Item label="Name" style={{ justifyContent: "center"}}>
-          <Input placeholder="First Name" />
-        </Form.Item>
-        <Form.Item label="Email" style={{ justifyContent: "center" }}>
-          <Input placeholder="name@email.com" />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary">Submit</Button>
-        </Form.Item>
-      </Form>
-    </div>
+    <Content className="landing-header__title">
+        <HeadIcon style={{ fontSize: '50px' }} className="landing-header__logo" />
+        <Title>Enlighten Me Daily®</Title>
+        <Text strong>Sign Up For Our Newsletter</Text>
+        <Form style={{marginTop: "20px"}}>
+          <Form.Item label="Name" style={{ justifyContent: "center"}}>
+            <Input placeholder="First Name" />
+          </Form.Item>
+          <Form.Item label="Email" style={{ justifyContent: "center" }}>
+            <Input placeholder="name@email.com" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary">Submit</Button>
+          </Form.Item>
+        </Form>
+    </Content>
   );
 }
