@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import './styles/index.css';
-import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing } from './sections';
+import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing, Policy } from './sections';
 import * as serviceWorker from './serviceWorker';
 import { Layout } from 'antd';
 import { Viewer } from './lib/types';
@@ -30,6 +30,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
+        <Route exact path="/privacy-policy" component={Policy} />
         <Route exact path="/Home" component={Home} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/quote/:id" component={Quote} />
