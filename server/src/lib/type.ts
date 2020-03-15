@@ -22,6 +22,7 @@ export interface User {
   contact: string;
   bookmarkings: ObjectId[];
   quotes: ObjectId[];
+  authorized?: boolean;
 }
 
 export interface Viewer {

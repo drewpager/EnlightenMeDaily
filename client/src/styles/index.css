@@ -11,6 +11,9 @@
     padding: 0;
   }
 }
+.landing {
+  display: inline-block;
+}
 .landing-header {
   color: #1d226c;
   font-size: xx-large;

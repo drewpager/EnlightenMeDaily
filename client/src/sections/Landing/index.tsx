@@ -1,5 +1,6 @@
 import React from 'react';
-import { Layout, Typography, Form, Input, Button } from 'antd';
+import { EmailSignUpForm } from './form';
+import { Layout, Typography } from 'antd';
 import Icon from '@ant-design/icons';
 
 const headSvg = () => (
@@ -11,25 +12,14 @@ const headSvg = () => (
 const HeadIcon = (props: any) => <Icon component={headSvg} {...props} />; 
 
 const { Content } = Layout;
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export const Landing = () => {
   return (
     <Content className="landing-header__title">
         <HeadIcon style={{ fontSize: '50px' }} className="landing-header__logo" />
         <Title>Enlighten Me Daily®</Title>
-        <Text strong>Sign Up For Our Newsletter</Text>
-        <Form style={{marginTop: "20px"}}>
-          <Form.Item label="Name" style={{ justifyContent: "center"}}>
-            <Input placeholder="First Name" />
-          </Form.Item>
-          <Form.Item label="Email" style={{ justifyContent: "center" }}>
-            <Input placeholder="name@email.com" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary">Submit</Button>
-          </Form.Item>
-        </Form>
+        <div className="landing" id="signup-form" dangerouslySetInnerHTML={{ __html: EmailSignUpForm }}/>
     </Content>
   );
 }
