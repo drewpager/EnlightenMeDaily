@@ -22,7 +22,9 @@ export const Login = ({ setViewer }: Props) => {
         query: AUTH_URL
       })
       window.location.href = data.authUrl;
-    } catch {}
+    } catch (error) {
+      throw new Error(`Failed to authorize user: ${error}`);
+    }
   }
 
   return (
@@ -35,9 +37,9 @@ export const Login = ({ setViewer }: Props) => {
             </span>
           </Title>
           <Title level={3} className="log-in-card__intro-title">
-            Log in to TinyHouse!
+            Log in to Enlighten Me Daily!
           </Title>
-          <Text>Sign in with Google to start booking available rentals!</Text>
+          <Text>Sign in with Google to start bookmarking quotes and getting daily emails!</Text>
         </div>
         <button className="log-in-card__google-button" onClick={handleAuthorize}>
           <img

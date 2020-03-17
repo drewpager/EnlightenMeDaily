@@ -34,7 +34,7 @@ export interface Viewer {
 
 export interface Bookmarking {
   _id: ObjectId;
-  quote: ObjectId;
+  quote: Quote;
   user: string;
 }
 

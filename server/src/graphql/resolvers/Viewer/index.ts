@@ -1,7 +1,7 @@
 import { IResolvers } from 'apollo-server-express';
 import { Viewer, Database, User } from '../../../lib/type';
 import { LogInArgs } from './types';
-import { Google } from '../../../lib/api';
+import { Google } from '../../../lib/api/Google';
 import crypto from 'crypto';
 
 const LogInViaGoogle = async (
