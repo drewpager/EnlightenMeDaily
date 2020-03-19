@@ -1,10 +1,17 @@
-import React from 'react';
-import { Layout, Card, Typography } from 'antd';
+import React, { useEffect, useRef } from 'react';
+import { useApolloClient, useMutation } from '@apollo/react-hooks';
+import { Layout, Card, Typography, Spin } from 'antd';
+import { Redirect } from 'react-router-dom';
+
 import { Viewer } from '../../lib/types';
 import { AUTH_URL } from '../../lib/graphql/queries/AuthUrl';
+import { LOG_IN } from '../../lib/graphql/mutations/LogIn';
 import { AuthUrl as AuthUrlData } from '../../lib/graphql/queries/AuthUrl/__generated__/AuthUrl';
+import { LogIn as LogInData, LogInVariables } from '../../lib/graphql/mutations/LogIn/__generated__/LogIn';
+import { ErrorBanner } from '../../lib/components';
+import { displaySuccessNotification, displayErrorMessage } from '../../lib/utils';
 import googleLogo from './assets/google_logo.jpg';
-import { useApolloClient, useMutation } from '@apollo/react-hooks';
+
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -15,6 +22,31 @@ interface Props {
 
 export const Login = ({ setViewer }: Props) => {
   const client = useApolloClient();
+  const [ logIn, { 
+    data: LogInData, 
+    loading: LogInLoading, 
+    error: LogInError 
+  }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
+    onCompleted: data => {
+      if (data && data.logIn) {
+        setViewer(data.logIn)
+        displaySuccessNotification("You've successfully logged in!");
+      }
+    }
+  });
+
+  const logInRef = useRef(logIn);
+
+  useEffect(() => {
+    const code = new URL(window.location.href).searchParams.get("code");
+    if (code) {
+      logInRef.current({
+        variables: {
+          input: { code }
+        }
+      })
+    }
+  }, [])
 
   const handleAuthorize = async () => {
     try {
@@ -22,13 +54,31 @@ export const Login = ({ setViewer }: Props) => {
         query: AUTH_URL
       })
       window.location.href = data.authUrl;
-    } catch (error) {
-      throw new Error(`Failed to authorize user: ${error}`);
+    } catch {
+      displayErrorMessage("Failed to log in");
     }
+  }
+
+  if (LogInLoading) {
+    return (
+      <Content className="log-in">
+        <Spin size="large" tip="Logging you in" />
+      </Content>
+    )
+  }
+
+  const loginErrorBanner = LogInError ? (
+    <ErrorBanner message="We weren't able to log you in. Please try again." />
+  ) : null;
+
+  if (LogInData && LogInData.logIn) {
+    const { id: viewerId } = LogInData.logIn; 
+    return <Redirect to={`/user/${viewerId}`} />
   }
 
   return (
     <Content className="log-in">
+      {loginErrorBanner}
       <Card className="log-in-card">
         <div className="log-in-card__intro">
           <Title level={3} className="log-in-card__intro-title">

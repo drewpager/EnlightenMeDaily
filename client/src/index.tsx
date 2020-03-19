@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import './styles/index.css';
-import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing, Policy } from './sections';
+import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing, Policy, AppHeader } from './sections';
 import * as serviceWorker from './serviceWorker';
-import { Layout } from 'antd';
+import { Layout, Affix } from 'antd';
 import { Viewer } from './lib/types';
 
 const client = new ApolloClient({
@@ -15,7 +15,7 @@ const client = new ApolloClient({
 });
 
 const initialViewer = {
-  _id: null,
+  id: null,
   token: null,
   avatar: null,
   didRequest: false
@@ -27,6 +27,9 @@ const App = () => {
   return (
   <Router>
     <Layout id="app">
+      <Affix offsetTop={0} className="app__affix-header">
+        <AppHeader viewer={viewer} setViewer={setViewer}/>
+      </Affix>
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
