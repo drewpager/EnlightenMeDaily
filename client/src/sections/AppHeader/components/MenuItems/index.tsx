@@ -19,7 +19,8 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
   const [logOut] = useMutation<LogOutData>(LOG_OUT, {
     onCompleted: data => {
       if (data && data.logOut) {
-        setViewer(data.logOut)
+        setViewer(data.logOut);
+        sessionStorage.removeItem("token");
         displaySuccessNotification("You have successfully logged out.");
       }
     },
@@ -51,16 +52,16 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
   ) : (
     <Item>
       <Link to="/login">
-        <Button type="primary">Sign In</Button>
+        <Button type="primary">Sign Up</Button>
       </Link>
     </Item>
   );
 
   return (
     <Menu mode="horizontal" selectable={false} className="menu">
-      <Item key="/host">
-        <Link to="/host">
-          Host
+      <Item key="/create">
+        <Link to="/create">
+          Create Quote
         </Link>
       </Item>
       {subMenuLogin}

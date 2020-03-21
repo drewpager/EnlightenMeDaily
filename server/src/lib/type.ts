@@ -6,12 +6,14 @@ export enum QuoteType {
 }
 export interface Quote {
   _id: ObjectId;
-  quote: String;
-  author: String;
-  category: String;
-  period: Number;
-  image: String;
+  quote: string;
+  author: string;
+  reporter: string;
+  category: string;
+  period: number;
+  image: string;
   type: QuoteType;
+  authorized?: boolean;
 }
 
 export interface User {

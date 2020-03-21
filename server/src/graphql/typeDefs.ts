@@ -25,7 +25,8 @@ export const typeDefs = gql`
   type Quote {
     id: ID!
     quote: String!
-    author: User!
+    author: String!
+    reporter: User!
     category: String!
     period: Int!
     image: String!
@@ -50,7 +51,7 @@ export const typeDefs = gql`
     code: String!
   }
   type Query {
-    # quotes: [Quote!]!
+    quote(id: ID!): Quote!
     authUrl: String!
     user(id: ID!): User!
   }

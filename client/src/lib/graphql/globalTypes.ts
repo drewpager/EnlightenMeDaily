@@ -6,6 +6,11 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum QuoteType {
+  PASSAGE = "PASSAGE",
+  QUOTE = "QUOTE",
+}
+
 export interface LogInInput {
   code: string;
 }
