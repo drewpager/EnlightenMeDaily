@@ -1,2 +1,2 @@
 export * from './QuoteDetails';
-// export * from './RelatedQuotes';
+export * from './RelatedQuotes';

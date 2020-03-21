@@ -54,6 +54,7 @@ export const typeDefs = gql`
     quote(id: ID!): Quote!
     authUrl: String!
     user(id: ID!): User!
+    quotes: String!
   }
 
   type Mutation {

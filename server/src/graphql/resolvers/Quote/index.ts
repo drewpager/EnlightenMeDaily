@@ -7,6 +7,9 @@ import { authorize } from '../../../lib/utils';
 
 export const quoteResolvers: IResolvers = {
   Query: {
+    quotes: () => {
+      return 'Query.quotes';
+    },
     quote: async (
       _root: undefined,
       { id }: QuoteArgs,

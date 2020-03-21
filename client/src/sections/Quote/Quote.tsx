@@ -5,7 +5,7 @@ import { Layout, Row, Col } from 'antd';
 import { PageSkeleton, ErrorBanner } from '../../lib/components/';
 import { QUOTE } from '../../lib/graphql/queries';
 import { Quote as QuoteData, QuoteVariables } from '../../lib/graphql/queries/Quote/__generated__/Quote';
-import { QuoteDetails } from './components/';
+import { QuoteDetails, RelatedQuotes } from './components/';
 
 const { Content } = Layout;
 interface MatchParams {
@@ -38,13 +38,17 @@ export const Quote = ({ match }: RouteComponentProps<MatchParams>) => {
 
   const quote = data ? data.quote : null;
   const quoteDetailsElement = quote ? <QuoteDetails quoteData={quote} /> : null;
+  const relatedQuotesElement = <RelatedQuotes />;
   
   return (
-    <Content className="quotes">
-      <Row gutter={24} justify="space-between">
+    <Content className="quote">
+      <Row gutter={24} typeof="flex" justify="space-between">
         <Col xs={24} lg={14}>
           {quoteDetailsElement}
         </Col> 
+        <Col xs={24} lg={10}>
+          {relatedQuotesElement}
+        </Col>
       </Row>
     </Content>
   );

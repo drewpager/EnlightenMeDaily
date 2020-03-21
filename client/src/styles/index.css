@@ -479,7 +479,7 @@
 .quotes {
   padding: 60px 120px;
 }
-@media (max-width: 75em) {
+@media (max-width: 350em) {
   .quotes {
     padding-left: 20px;
     padding-right: 20px;
