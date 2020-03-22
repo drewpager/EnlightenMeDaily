@@ -1,17 +1,15 @@
-import React from 'react';
-
 export const EmailSignUpForm = `
   <!-- Begin Mailchimp Signup Form -->
   <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
   <style type="text/css">
-    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:500px;}
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
     /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
   </style>
   <div id="mc_embed_signup">
-  <form action="https://greadings.us4.list-manage.com/subscribe/post?u=47cd7880319189a19819d5855&amp;id=aa10a9ad5e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <form action="https://siegemedia.us4.list-manage.com/subscribe/post?u=47cd7880319189a19819d5855&amp;id=aa10a9ad5e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
       <div id="mc_embed_signup_scroll">
-    <h2>Subscribe to a Newsletter Built Just for You.</h2>
+    <h2>Sign Up and Customize Your Daily Newsletter</h2>
   <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
   <div class="mc-field-group">
     <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
@@ -35,11 +33,11 @@ export const EmailSignUpForm = `
     </div>
   </div><div class="mc-field-group input-group">
       <strong>Enlighten Me Daily </strong>
-      <ul><li><input type="checkbox" value="1" name="group[69278][1]" id="mce-group[69278]-69278-0"><label for="mce-group[69278]-69278-0">Quote of the day</label></li>
-  <li><input type="checkbox" value="2" name="group[69278][2]" id="mce-group[69278]-69278-1"><label for="mce-group[69278]-69278-1">This day in History</label></li>
-  <li><input type="checkbox" value="4" name="group[69278][4]" id="mce-group[69278]-69278-2"><label for="mce-group[69278]-69278-2">Horoscope</label></li>
-  <li><input type="checkbox" value="8" name="group[69278][8]" id="mce-group[69278]-69278-3"><label for="mce-group[69278]-69278-3">Daily devotional</label></li>
-  <li><input type="checkbox" value="16" name="group[69278][16]" id="mce-group[69278]-69278-4"><label for="mce-group[69278]-69278-4">Financial markets</label></li>
+      <ul><li><input type="checkbox" value="1" name="group[69278][1]" id="mce-group[69278]-69278-0"><label for="mce-group[69278]-69278-0">Motivational Quotes</label></li>
+  <li><input type="checkbox" value="2" name="group[69278][2]" id="mce-group[69278]-69278-1"><label for="mce-group[69278]-69278-1">Leadership Quotes</label></li>
+  <li><input type="checkbox" value="4" name="group[69278][4]" id="mce-group[69278]-69278-2"><label for="mce-group[69278]-69278-2">Life &amp; Love Quotes</label></li>
+  <li><input type="checkbox" value="8" name="group[69278][8]" id="mce-group[69278]-69278-3"><label for="mce-group[69278]-69278-3">Positivity Quotes</label></li>
+  <li><input type="checkbox" value="16" name="group[69278][16]" id="mce-group[69278]-69278-4"><label for="mce-group[69278]-69278-4">Binaural Beats</label></li>
   </ul>
   </div>
     <div id="mce-responses" class="clear">

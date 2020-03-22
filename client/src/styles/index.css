@@ -13,6 +13,7 @@
 }
 .landing {
   display: inline-block;
+  width: 500px;
 }
 .landing-header {
   color: #1d226c;
