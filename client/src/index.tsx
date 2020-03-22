@@ -83,7 +83,7 @@ const App = () => {
         <Route exact path="/Home" component={Home} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/quote/:id" component={Quote} />
-        <Route exact path="/quotes/:category?" component={Quotes} />
+        <Route exact path="/topics/:category?" component={Quotes} />
         <Route exact path="/user/:id" component={User} />
         <Route component={NotFound} />
       </Switch>
