@@ -17,11 +17,6 @@ export const typeDefs = gql`
     PASSAGE
   }
 
-  enum QuoteFilter {
-    OLDEST
-    MOST_RECENT
-  }
-
   type Quotes {
     total: Int!
     result: [Quote!]!
@@ -30,8 +25,7 @@ export const typeDefs = gql`
   type Quote {
     id: ID!
     quote: String!
-    author: String!
-    reporter: User!
+    author: User!
     category: String!
     period: Int!
     image: String!
@@ -56,10 +50,9 @@ export const typeDefs = gql`
     code: String!
   }
   type Query {
-    quote(id: ID!): Quote!
+    # quotes: [Quote!]!
     authUrl: String!
     user(id: ID!): User!
-    quotes(filter: QuoteFilter!, limit: Int!, page: Int!): Quotes!
   }
 
   type Mutation {

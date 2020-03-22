@@ -6,14 +6,12 @@ export enum QuoteType {
 }
 export interface Quote {
   _id: ObjectId;
-  quote: string;
-  author: string;
-  reporter: string;
-  category: string;
-  period: number;
-  image: string;
+  quote: String;
+  author: String;
+  category: String;
+  period: Number;
+  image: String;
   type: QuoteType;
-  authorized?: boolean;
 }
 
 export interface User {
@@ -36,7 +34,7 @@ export interface Viewer {
 
 export interface Bookmarking {
   _id: ObjectId;
-  quote: Quote;
+  quote: ObjectId;
   user: string;
 }
 
