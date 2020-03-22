@@ -9,15 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require('dotenv').config();
 const googleapis_1 = require("googleapis");
 const auth = new googleapis_1.google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, `${process.env.PUBLIC_URL}/login`);
+const scopes = [
+    `https://www.googleapis.com/auth/userinfo.email`,
+    `https://www.googleapis.com/auth/userinfo.profile`
+];
 exports.Google = {
     authUrl: auth.generateAuthUrl({
         access_type: "online",
-        scope: [
-            "https://www.googleapis.com/auth/userinfo.email",
-            "https://www.googleapis.com/auth/userinfo.profile"
-        ]
+        scope: scopes
     }),
     logIn: (code) => __awaiter(void 0, void 0, void 0, function* () {
         const { tokens } = yield auth.getToken(code);
