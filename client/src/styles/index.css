@@ -114,10 +114,16 @@
   right: 0;
 }
 .quote-card__description {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 .quote-card__price.ant-typography {
   color: #1d226c;
+}
+.quote-card__quote.ant-typography {
+  color: #1d226c;
+  display: block;
+  overflow-wrap: break-word;
+  font-size: 13px;
 }
 .quote-card__price.ant-typography span {
   color: #bfbfbf;

@@ -8,3 +8,4 @@ export * from './Login';
 export * from './Policy';
 export * from './Landing';
 export * from './AppHeader';
+export * from './Topics';

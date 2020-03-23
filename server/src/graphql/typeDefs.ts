@@ -59,7 +59,7 @@ export const typeDefs = gql`
     quote(id: ID!): Quote!
     authUrl: String!
     user(id: ID!): User!
-    quotes(filter: QuoteFilter!, limit: Int!, page: Int!): Quotes!
+    quotes(category: String, filter: QuoteFilter!, limit: Int!, page: Int!): Quotes!
   }
 
   type Mutation {

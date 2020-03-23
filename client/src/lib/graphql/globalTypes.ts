@@ -6,6 +6,11 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum QuoteFilter {
+  MOST_RECENT = "MOST_RECENT",
+  OLDEST = "OLDEST",
+}
+
 export enum QuoteType {
   PASSAGE = "PASSAGE",
   QUOTE = "QUOTE",

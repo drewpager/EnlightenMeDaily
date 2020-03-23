@@ -1,15 +1,29 @@
 import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { Layout, Typography } from 'antd';
-import { HomeHero } from './components/';
+import { HomeHero, HomeQuotes, HomeQuoteSkeleton } from './components/';
 import { displayErrorMessage } from '../../lib/utils';
+import { QUOTES } from '../../lib/graphql/queries/Quotes';
+import { Quotes as QuotesData, QuotesVariables } from '../../lib/graphql/queries/Quotes/__generated__/Quotes';
+import { QuoteFilter } from '../../lib/graphql/globalTypes';
 
 import mapBackground from './assets/map-background.jpg';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
+const PAGE_LIMIT = 4;
+const PAGE_NUMBER = 1;
+
 export const Home = ({ history }: RouteComponentProps) => {
+  const { loading, data } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
+    variables: {
+      filter: QuoteFilter.OLDEST,
+      limit: PAGE_LIMIT,
+      page: PAGE_NUMBER
+    }
+  });
   const onSearch = (value: string) => {
     const trimmedValue = value.trim();
     if (trimmedValue && trimmedValue.length > 0) {
@@ -17,6 +31,18 @@ export const Home = ({ history }: RouteComponentProps) => {
     } else {
       displayErrorMessage("Please enter a valid search.");
     }
+  }
+
+  const renderQuotesSection = () => {
+    if (loading) {
+      return <HomeQuoteSkeleton />;
+    }
+
+    if (data) {
+      return <HomeQuotes title="Recent Quotes" quotes={data.quotes.result} />;
+    }
+
+    return null;
   }
   return (
     <Content className="home" style={{ backgroundImage: `url(${mapBackground})`}}>
@@ -29,6 +55,7 @@ export const Home = ({ history }: RouteComponentProps) => {
         <Link to="/subscribe" className="ant-btn ant-btn-primary ant-btn-lg home__cta-section-button">
           Subscribe
         </Link>
+        {renderQuotesSection()}
       </div>
     </Content>
   )

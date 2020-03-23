@@ -9,6 +9,7 @@ export enum QuoteFilter {
 }
 
 export interface QuotesArgs {
+  category: string | null;
   filter: QuoteFilter;
   limit: number;
   page: number;

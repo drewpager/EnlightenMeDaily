@@ -9,32 +9,54 @@ export const quoteResolvers: IResolvers = {
   Query: {
     quotes: async (
       _root: undefined,
-      { filter, limit, page }: QuotesArgs,
+      { category, filter, limit, page }: QuotesArgs,
       { db }: { db: Database }
     ): Promise<QuotesData> => {
+      const query: string = "";
       try {
         const data: QuotesData = {
           total: 0,
           result: []
         }
+        //playing around with if statement for user searching category
+        // remove if else blocks 
         
-        let cursor = await db.quotes.find({});
+        if (query === category) {
+          let cursor = await db.quotes.find({query});
+          if (filter && filter === "OLDEST") {
+            cursor = cursor.sort({ period: -1 });
+          }
+  
+          if (filter && filter === "MOST_RECENT") {
+            cursor = cursor.sort({ period: 1 });
+          }
+  
+          cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+          cursor = cursor.limit(limit);
+  
+          data.total = await cursor.count();
+          data.result = await cursor.toArray();
+  
+          return data;
+        } else {
+          let cursor = await db.quotes.find({});
 
-        if (filter && filter === "OLDEST") {
-          cursor = cursor.sort({ period: -1 });
+          if (filter && filter === "OLDEST") {
+            cursor = cursor.sort({ period: -1 });
+          }
+  
+          if (filter && filter === "MOST_RECENT") {
+            cursor = cursor.sort({ period: 1 });
+          }
+  
+          cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+          cursor = cursor.limit(limit);
+  
+          data.total = await cursor.count();
+          data.result = await cursor.toArray();
+  
+          return data;
         }
-
-        if (filter && filter === "MOST_RECENT") {
-          cursor = cursor.sort({ period: 1 });
-        }
-
-        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
-        cursor = cursor.limit(limit);
-
-        data.total = await cursor.count();
-        data.result = await cursor.toArray();
-
-        return data;
       } catch (error) {
         throw new Error(`Failed to query quotes: ${error}`);
       }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 
 import logo from './assets/brain.png'
@@ -7,6 +7,7 @@ import { MenuItems } from './components/';
 import { Viewer } from '../../lib/types';
 
 const { Header } = Layout;
+const { Text, Paragraph } = Typography;
 
 interface Props {
   viewer: Viewer;
@@ -20,6 +21,7 @@ export const AppHeader = ({ viewer, setViewer }: Props) => {
         <div className="app-header__logo">
           <Link to="/">
             <img src={logo} alt="Enlighten Me Daily brain logo" />
+            <Text style={{ fontSize: "20px", marginLeft: "10px" }} strong>Enlighten Me Daily</Text>
           </Link>
         </div>
       </div>

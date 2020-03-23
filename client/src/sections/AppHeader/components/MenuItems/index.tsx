@@ -59,9 +59,9 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
 
   return (
     <Menu mode="horizontal" selectable={false} className="menu">
-      <Item key="/create">
-        <Link to="/create">
-          Create Quote
+      <Item key="/subscribe">
+        <Link to="/subscribe">
+          Subscribe
         </Link>
       </Item>
       {subMenuLogin}
