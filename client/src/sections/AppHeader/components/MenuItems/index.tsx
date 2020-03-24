@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
-import { Button, Menu, Avatar } from 'antd';
+import { Button, Menu, Avatar, Input } from 'antd';
 
 import { LOG_OUT } from '../../../../lib/graphql/mutations/LogOut';
 import { LogOut as LogOutData } from '../../../../lib/graphql/mutations/LogOut/__generated__/LogOut';

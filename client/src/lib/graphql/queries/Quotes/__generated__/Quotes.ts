@@ -20,6 +20,7 @@ export interface Quotes_quotes_result {
 
 export interface Quotes_quotes {
   __typename: "Quotes";
+  total: number;
   result: Quotes_quotes_result[];
 }
 
