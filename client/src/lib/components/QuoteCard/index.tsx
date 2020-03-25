@@ -19,8 +19,14 @@ export const QuoteCard = ({ quotes }: Props) => {
   const { id, quote, author, category, period, image } = quotes;
 
   return (
-    <Link to={`/quote/${id}`}>
-      <Card hoverable cover={<div style={{ backgroundImage: `url(${image})`}} className="quote-card__cover-img"></div>}>
+      <Link to={`/quote/${id}`}>
+      <Card 
+        hoverable 
+        cover={
+          <div 
+            style={{ backgroundImage: `url(${image})`}} className="quote-card__cover-img"
+          />
+        }>
         <div className="quote-card__description">
           <Paragraph className="quote-card__quote">
             "{quote}"
@@ -29,10 +35,10 @@ export const QuoteCard = ({ quotes }: Props) => {
             {author}
           </Text>
           <Text strong ellipsis className="quote-card__address">
-            Time period: {period}
+            {/* Time period: {period} */}
           </Text>
           <div className="quote-card__dimensions quote-card__dimensions--guests">
-            <Text>{category}</Text>
+            {/* <Text>{category}</Text> */}
           </div>
         </div>
       </Card>

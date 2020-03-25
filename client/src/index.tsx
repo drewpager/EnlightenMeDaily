@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider, useMutation } from '@apollo/react-hooks';
 import './styles/index.css';
-import { Home, Create, Quote, Quotes, Topics, NotFound, User, Login, Landing, Policy, AppHeader } from './sections';
+import { Home, Create, Quote, Quotes, Topics, NotFound, User, Login, Landing, Policy, AppHeader, AppFooter } from './sections';
 import { LOG_IN } from './lib/graphql/mutations/LogIn';
 import { LogIn as LogInData, LogInVariables } from './lib/graphql/mutations/LogIn/__generated__/LogIn';
 import * as serviceWorker from './serviceWorker';
@@ -87,6 +87,7 @@ const App = () => {
         <Route exact path="/user/:id" component={User} />
         <Route component={NotFound} />
       </Switch>
+      <AppFooter />
     </Layout>
   </Router>
   );

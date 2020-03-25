@@ -66,5 +66,6 @@ export const typeDefs = gql`
     # deleteQuote(id: ID!): Quote!
     logIn(input: LogInInput): Viewer!
     logOut: Viewer!
+    createBookmark: String!
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { List, Layout, Typography } from 'antd';
@@ -21,7 +21,10 @@ const { Title } = Typography;
 export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
   const [filter, setFilter] = useState(QuoteFilter.MOST_RECENT);
   const [page, setPage] = useState(1);
+  const categoryRef = useRef(match.params.category);
+
   const { data, loading, error } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
+    skip: categoryRef.current !== match.params.category && page !== 1,
     variables: {
       category: match.params.category,
       filter: QuoteFilter.MOST_RECENT,
@@ -29,6 +32,11 @@ export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
       page: 1
     }
   })
+
+  useEffect(() => {
+    setPage(1);
+    categoryRef.current = match.params.category;
+  }, [match.params.category]);
 
   if (loading) {
     return (

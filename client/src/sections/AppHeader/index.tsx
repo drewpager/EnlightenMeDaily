@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Typography, Input } from 'antd';
 import { RouteComponentProps, Link, withRouter } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ interface Props {
   setViewer: (viewer: Viewer) => void;
 }
 
-export const AppHeader = withRouter(({ viewer, setViewer, history }: Props & RouteComponentProps) => {
+export const AppHeader = withRouter(({ viewer, setViewer, history, location }: Props & RouteComponentProps) => {
   const onSearch = (value: string) => {
     const trimmedValue = value.trim();
     if (trimmedValue) {
@@ -26,6 +26,21 @@ export const AppHeader = withRouter(({ viewer, setViewer, history }: Props & Rou
     }
   }
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const { pathname } = location;
+    const pathnameSubStrings = pathname.split('/');
+    
+    if (!pathname.includes('/topics')) {
+      setSearch("")
+      return;
+    }
+
+    if (pathname.includes('/topics') && pathnameSubStrings.length === 3) {
+      setSearch(pathnameSubStrings[2]);
+      return;
+    }
+  }, [location])
    return (
     <Header className="app-header">
       <div className="app-header__logo-search-section">
