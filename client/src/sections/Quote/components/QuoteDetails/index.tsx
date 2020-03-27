@@ -8,7 +8,7 @@ interface Props {
   quoteData: QuoteData["quote"];
 }
 
-const { Paragraph, Title } = Typography;
+const { Title } = Typography;
 
 export const QuoteDetails = ({ quoteData }: Props) => {
   const { quote, author, category, period, image, type } = quoteData;
@@ -22,8 +22,6 @@ export const QuoteDetails = ({ quoteData }: Props) => {
       <div className="quote-details__information">
         <Title level={3} className="quote-details__title">
           {quote}
-          <Divider type="horizontal" />
-          {author}
         </Title>
       </div>
 

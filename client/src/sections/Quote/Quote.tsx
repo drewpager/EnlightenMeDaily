@@ -38,7 +38,7 @@ export const Quote = ({ match }: RouteComponentProps<MatchParams>) => {
 
   const quote = data ? data.quote : null;
   const quoteDetailsElement = quote ? <QuoteDetails quoteData={quote} /> : null;
-  const relatedQuotesElement = <RelatedQuotes />;
+  const relatedQuotesElement = quote && quote.category ? <RelatedQuotes categoryData={quote.category} /> : null;
   
   return (
     <Content className="quote">

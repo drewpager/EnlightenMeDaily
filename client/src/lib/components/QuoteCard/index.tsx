@@ -13,7 +13,7 @@ interface Props {
   }
 }
 
-const { Title, Text, Paragraph } = Typography;
+const { Text, Paragraph } = Typography;
 
 export const QuoteCard = ({ quotes }: Props) => {
   const { id, quote, author, category, period, image } = quotes;
@@ -38,7 +38,7 @@ export const QuoteCard = ({ quotes }: Props) => {
             {/* Time period: {period} */}
           </Text>
           <div className="quote-card__dimensions quote-card__dimensions--guests">
-            {/* <Text>{category}</Text> */}
+            <Text>{category}</Text>
           </div>
         </div>
       </Card>
