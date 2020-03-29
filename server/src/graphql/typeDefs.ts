@@ -31,7 +31,6 @@ export const typeDefs = gql`
     id: ID!
     quote: String!
     author: String!
-    reporter: User!
     category: String!
     period: Int!
     image: String!

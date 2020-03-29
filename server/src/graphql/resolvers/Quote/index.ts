@@ -89,16 +89,16 @@ export const quoteResolvers: IResolvers = {
     id: (quote: Quote): string => {
       return quote._id.toHexString();
     },
-    reporter: async (
-     quote: Quote,
-     _args: {},
-     { db }: { db: Database }
-    ): Promise<User> => {
-      const reporter = await db.users.findOne({ _id: quote.reporter });
-      if (!reporter) {
-        throw new Error(`Failed to find reporter`);
-      }
-      return reporter;
-    }
+    // reporter: async (
+    //  quote: Quote,
+    //  _args: {},
+    //  { db }: { db: Database }
+    // ): Promise<User> => {
+    //   const reporter = await db.users.findOne({ _id: quote.reporter });
+    //   if (!reporter) {
+    //     throw new Error(`Failed to find reporter`);
+    //   }
+    //   return reporter;
+    // }
   }
 }
