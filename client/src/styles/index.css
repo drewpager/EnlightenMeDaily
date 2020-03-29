@@ -393,14 +393,24 @@
   height: 570px;
   background-size: cover;
   background-position: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 @media (max-width: 75em) {
   .quote-details__image {
     height: 380px;
   }
 }
-.quote-details__title.ant-typography {
+.quote-details__quotation::before {
+  quotes:'\201C''\201D''\2018''\2019';
+  top: 5px;
+  right: 5px;
+  font-size:72px;
+	line-height:72px;
+	position: relative;
+  font-family:serif;
+  content:open-quote;
+}
+.quote-details__quotation.ant-typography {
   margin-top: 5px !important;
   margin-bottom: 5px;
 }

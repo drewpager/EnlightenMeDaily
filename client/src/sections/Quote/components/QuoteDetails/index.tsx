@@ -20,7 +20,7 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         className="quote-details__image"
       />
       <div className="quote-details__information">
-        <Title level={3} className="quote-details__title">
+        <Title level={3} className="quote-details__quotation">
           {quote}
         </Title>
       </div>
@@ -42,7 +42,6 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         </Title>
         <div className="quote-details__about-items">
           <Tag color="magenta">{category}</Tag>
-          <Tag color="magenta">{type}</Tag>
         </div>
       </div>
     </div>

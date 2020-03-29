@@ -21,7 +21,7 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
           gutter: 8,
           xs: 1,
           sm: 2,
-          lg: 4
+          lg: 2
         }}
         dataSource={quotes}
         renderItem={quote => (
