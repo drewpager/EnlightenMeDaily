@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router-dom';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row, Col, Affix } from 'antd';
 import { PageSkeleton, ErrorBanner } from '../../lib/components/';
 import { QUOTE } from '../../lib/graphql/queries';
 import { Quote as QuoteData, QuoteVariables } from '../../lib/graphql/queries/Quote/__generated__/Quote';
@@ -38,7 +38,7 @@ export const Quote = ({ match }: RouteComponentProps<MatchParams>) => {
 
   const quote = data ? data.quote : null;
   const quoteDetailsElement = quote ? <QuoteDetails quoteData={quote} /> : null;
-  const relatedQuotesElement = quote && quote.category ? <RelatedQuotes categoryData={quote.category} /> : null;
+  const relatedQuotesElement = quote && quote.category ? <Affix offsetTop={40}><RelatedQuotes categoryData={quote.category} /></Affix>: null;
   
   return (
     <Content className="quote">

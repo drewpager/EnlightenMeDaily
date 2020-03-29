@@ -75,7 +75,7 @@ export const quoteResolvers: IResolvers = {
         // author may be string and therefore not equal to an ID. 
         // possibly remove this
         const viewer = await authorize(db, req);
-        if (viewer && viewer._id === quote.reporter) {
+        if (viewer && viewer._id) {
           quote.authorized = true;
         }
 
