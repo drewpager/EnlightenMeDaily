@@ -8,7 +8,6 @@ export interface Quote {
   _id: ObjectId;
   quote: string;
   author: string;
-  reporter: string;
   category: string;
   period: number;
   image: string;

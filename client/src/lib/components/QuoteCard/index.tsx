@@ -28,8 +28,8 @@ export const QuoteCard = ({ quotes }: Props) => {
           />
         }>
         <div className="quote-card__description">
-          <Paragraph className="quote-card__quote">
-            "{quote}"
+          <Paragraph className="quote-card__quote quote-card__quote-open">
+            {quote}
           </Paragraph>
           <Text strong ellipsis className="quote-card__title">
             {author}

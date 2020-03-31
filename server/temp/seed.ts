@@ -45,7 +45,43 @@ const seed = async () => {
         period: 2000,
         image: "https://images.unsplash.com/photo-1514050566906-8d077bae7046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
         type: QuoteType.Quote
-      }
+      },
+      {
+        _id: new ObjectId(),
+        quote:"Leadership is not about a title or a designation. It's about impact, influence and inspiration. Impact involves getting results, influence is about spreading the passion you have for your work, and you have to inspire teammates and customers.",
+        author:'Robin S. Sharma',
+        category:'leadership',
+        period: 2,
+        image:'https://images.unsplash.com/photo-1533511627347-4d1b893e1ad9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2044&q=80',
+        type:QuoteType.Quote
+      },
+      {
+        _id:new ObjectId(),
+        quote:'The supreme quality for leadership is unquestionably integrity. Without it, no real success is possible, no matter whether it is on a section gang, a football field, in an army or in an office.',
+        author:'Dwight D. Eisenhower',
+        category:'leadership',
+        period:3,
+        image:'https://images.unsplash.com/photo-1533511627347-4d1b893e1ad9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2044&q=80',
+        type:QuoteType.Quote
+      },
+      {
+        _id:new ObjectId(),
+        quote:'A leader is best when people barely know he exists, when his work is done, his aim fulfilled, they will say; we did it ourselves.',
+        author:'Lao Tzu',
+        category:'leadership',
+        period:4,
+        image:'https://images.unsplash.com/photo-1533511627347-4d1b893e1ad9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2044&q=80',
+        type:QuoteType.Quote
+      },
+      {
+        _id:new ObjectId(),
+        quote:"Ultimately, leadership is not about glorius crowning acts. It's about keeping your team focused on a goal and motivated to do their best to achieve it, especially when the stakes are high and the consequences really matter. It is about laying the groundwork for others' success, and then standing back and letting them shine.",
+        author:'Chris Hadfield',
+        category:'leadership',
+        period:5,
+        image:'https://images.unsplash.com/photo-1533511627347-4d1b893e1ad9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2044&q=80',
+        type:QuoteType.Quote
+      }
     ];
 
     const bookmarkings: Bookmarking[] = [

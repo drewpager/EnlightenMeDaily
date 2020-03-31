@@ -100,7 +100,7 @@ export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
   );
 
   return (
-    <Content className="quotes">
+    <Content className="quote">
       {quoteCategoryElement}
       {quotesSectionElement}
     </Content>

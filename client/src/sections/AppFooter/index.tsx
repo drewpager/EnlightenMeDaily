@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Typography, Divider, Affix } from 'antd';
+import { Layout, Typography, Divider } from 'antd';
 
 const { Footer } = Layout;
 const { Text } = Typography;
@@ -15,10 +15,10 @@ export const AppFooter = () => {
       </ul>
       <Text className="app-footer__text">Quick Quotes</Text>
       <ul className="app-footer__li">
-        <li><Link to="topics/motivational%20quotes">Motivational Quotes</Link></li>
-        <li><Link to="topics/positive%20quotes">Positive Quotes</Link></li>
-        <li><Link to="topics/leadership%20quotes">Leadership Quotes</Link></li>
-        <li><Link to="topics/love%20quotes">Love Quotes</Link></li>
+        <li><Link to="topics/motivational-quotes">Motivational Quotes</Link></li>
+        <li><Link to="topics/positive-quotes">Positive Quotes</Link></li>
+        <li><Link to="topics/leadership-quotes">Leadership Quotes</Link></li>
+        <li><Link to="topics/love-quotes">Love Quotes</Link></li>
       </ul>
       <Divider />
       <Text className="app-footer__text-center">Enlighten Me Daily® 2020</Text>

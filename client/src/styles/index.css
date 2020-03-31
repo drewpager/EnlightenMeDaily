@@ -126,6 +126,15 @@
   overflow-wrap: break-word;
   font-size: 13px;
 }
+.quote-card__quote-open::before {
+  quotes:'\201C';
+  font-family:serif;
+  content:open-quote;
+  position: absolute;
+  margin-left: -12px;
+  font-size:32px;
+	line-height:32px;
+}
 .quote-card__price.ant-typography span {
   color: #bfbfbf;
   font-weight: 400;
@@ -211,6 +220,10 @@
 }
 .home-quotes {
   padding: 40px 0 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: space-around;
 }
 .home-quotes__title.ant-typography {
   color: #1d226c;
