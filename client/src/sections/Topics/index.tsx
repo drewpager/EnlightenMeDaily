@@ -29,7 +29,7 @@ export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
       category: match.params.category,
       filter: QuoteFilter.MOST_RECENT,
       limit: PAGE_LIMIT,
-      page: 1
+      page
     }
   })
 
