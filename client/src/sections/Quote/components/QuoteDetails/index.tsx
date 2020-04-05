@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Avatar, Divider, Tag, Typography } from 'antd';
-// import Icon from '@ant-design/icons';
+import { Avatar, Divider, Tag, Typography, Button } from 'antd';
+import { CopyOutlined, TwitterOutlined }  from '@ant-design/icons';
 import { Quote as QuoteData } from '../../../../lib/graphql/queries/Quote/__generated__/Quote';
 
 interface Props {
@@ -23,6 +22,8 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         <Title level={3} className="quote-details__quotation">
           {quote}
         </Title>
+          <CopyOutlined className="quote-details__icon-copy" />
+          <TwitterOutlined className="quote-details__icon-twitter" />
       </div>
 
       <Divider />

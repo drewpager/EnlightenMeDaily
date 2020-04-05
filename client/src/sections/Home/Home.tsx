@@ -19,7 +19,8 @@ const PAGE_NUMBER = 1;
 export const Home = ({ history }: RouteComponentProps) => {
   const { loading, data } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
     variables: {
-      filter: QuoteFilter.OLDEST,
+      category: "motivation, leadership, love",
+      filter: QuoteFilter.MOST_RECENT,
       limit: PAGE_LIMIT,
       page: PAGE_NUMBER
     }
@@ -39,7 +40,7 @@ export const Home = ({ history }: RouteComponentProps) => {
     }
 
     if (data) {
-      return <HomeQuotes title="Recent Quotes" quotes={data.quotes.result} />;
+      return <HomeQuotes title="More Quotes" quotes={data.quotes.result} />;
     }
 
     return null;
