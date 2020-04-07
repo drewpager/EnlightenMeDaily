@@ -22,7 +22,7 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         <Title level={3} className="quote-details__quotation">
           {quote}
         </Title>
-          <CopyOutlined className="quote-details__icon-copy" />
+          <CopyOutlined className="quote-details__icon-copy" onClick={() => {navigator.clipboard.writeText(quote)}}/>
           <TwitterOutlined className="quote-details__icon-twitter" />
       </div>
 

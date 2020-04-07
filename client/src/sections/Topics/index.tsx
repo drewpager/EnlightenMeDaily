@@ -40,7 +40,7 @@ export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
 
   if (loading) {
     return (
-      <Content className="quotes">
+      <Content className="quote">
         <QuotesSkeleton />
       </Content>
     )
@@ -48,7 +48,7 @@ export const Topics = ({ match }: RouteComponentProps<MatchParams>) => {
 
   if (error) {
     return (
-      <Content className="quotes">
+      <Content className="quote">
         <ErrorBanner description={`We either couldn't find anything matching your search or have encountered an error.
             If you're searching for a unique quote, try searching again with more common keywords.`} />
         <QuotesSkeleton />
