@@ -25,3 +25,8 @@ export const displaySuccessNotification = (message: string, description?: string
 export const displayErrorMessage = (error: string) => {
   return message.error(error);
 }
+
+export const copyToClipboard = (quote: string) => {
+  navigator.clipboard.writeText(quote);
+  displaySuccessNotification("Copied to Clipboard!");
+}

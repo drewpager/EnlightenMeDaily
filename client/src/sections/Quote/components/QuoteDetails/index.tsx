@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar, Divider, Tag, Typography, Button } from 'antd';
 import { CopyOutlined, TwitterOutlined }  from '@ant-design/icons';
 import { Quote as QuoteData } from '../../../../lib/graphql/queries/Quote/__generated__/Quote';
+import { copyToClipboard } from '../../../../lib/utils';
 
 interface Props {
   quoteData: QuoteData["quote"];
@@ -22,7 +23,7 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         <Title level={3} className="quote-details__quotation">
           {quote}
         </Title>
-          <CopyOutlined className="quote-details__icon-copy" onClick={() => {navigator.clipboard.writeText(quote)}}/>
+          <CopyOutlined className="quote-details__icon-copy" onClick={() => {copyToClipboard(quote)}}/>
           <TwitterOutlined className="quote-details__icon-twitter" />
       </div>
 
