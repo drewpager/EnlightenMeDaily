@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { Card, Typography, Divider, Spin, List } from 'antd';
+import { Card, Typography, Divider, Spin, List, Avatar } from 'antd';
 import { Quote as QuoteData } from '../../../../lib/graphql/queries/Quote/__generated__/Quote';
 import { QUOTES } from '../../../../lib/graphql/queries/Quotes';
 import { Quotes as QuotesData, QuotesVariables } from '../../../../lib/graphql/queries/Quotes/__generated__/Quotes';
@@ -22,7 +22,7 @@ export const RelatedQuotes = ({ categoryData }: Props) => {
   const { loading, error, data } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
     variables: {
       category: cat,
-      filter: QuoteFilter.MOST_RECENT,
+      filter: QuoteFilter.OLDEST,
       limit: PAGE_LIMIT,
       page: 1
     }
@@ -50,7 +50,7 @@ export const RelatedQuotes = ({ categoryData }: Props) => {
       <Card className="quote-booking__card">
         <div>
           <Paragraph>
-            <Title level={2} className="quote-booking__card-title">Related Content</Title>
+            <Title level={2} className="quote-booking__card-title">Related Authors</Title>
           </Paragraph>
           <Divider />
           <List 
@@ -58,6 +58,7 @@ export const RelatedQuotes = ({ categoryData }: Props) => {
             dataSource={quotes}
             renderItem={quote => (
               <List.Item>
+                <Avatar src={`${quote.image}`} />
                 <Link to={`/quote/${quote.id}`}>{quote.author}</Link>
               </List.Item>
             )}
