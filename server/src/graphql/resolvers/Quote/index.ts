@@ -1,10 +1,21 @@
 import { IResolvers } from 'apollo-server-express';
 import { ObjectId } from 'mongodb';
 import { Request } from 'express';
-import { Database, Quote, User } from '../../../lib/type';
-import { QuoteArgs, QuotesArgs, QuotesData } from './types';
+import { Database, Quote, User, QuoteType } from '../../../lib/type';
+import { QuoteArgs, QuotesArgs, QuotesData, CreateQuoteArgs, CreateQuoteInput } from './types';
 import { authorize } from '../../../lib/utils';
 
+const verifyCreateQuoteInput = ({ quote, author, type }: CreateQuoteInput) => {
+  if (quote.length < 50) {
+    throw new Error('Quote must be greater than 50 characters');
+  }
+  if (author.length < 3) {
+    throw new Error('Author name must be longer than 3 characters');
+  }
+  if (type !== QuoteType.Passage && type !== QuoteType.Quote) {
+    throw new Error('Type must be "QUOTE" or "PASSAGE"');
+  }
+}
 export const quoteResolvers: IResolvers = {
   Query: {
     quotes: async (
@@ -79,5 +90,32 @@ export const quoteResolvers: IResolvers = {
     //   }
     //   return reporter;
     // }
+  },
+  Mutation: {
+    createQuote: async (
+      _root: undefined,
+      { input }: CreateQuoteArgs,
+      { db, req }: { db: Database, req: Request }
+    ): Promise<Quote> => {
+      verifyCreateQuoteInput(input);
+      let viewer = await authorize(db, req);
+      if (!viewer) {
+        throw new Error('Viewer not found. Please log in!');
+      }
+
+      const insertResult = await db.quotes.insertOne({
+        _id: new ObjectId(),
+        ...input
+      })
+
+      const insertedQuote: Quote = insertResult.ops[0];
+
+      await db.users.updateOne(
+        { _id: viewer._id },
+        { $push: { quotes: insertedQuote._id }}
+      );
+      
+      return insertedQuote;
+    }
   }
 }

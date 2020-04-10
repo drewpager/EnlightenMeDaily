@@ -6,6 +6,7 @@ import compression from 'compression';
 import { typeDefs, resolvers } from './graphql';
 import { connectDatabase } from './database';
 import cookieparser from 'cookie-parser';
+import bodyParser from 'body-parser';
 
 const port = process.env.PORT;
 
@@ -14,6 +15,7 @@ const port = process.env.PORT;
 const mount = async (app: Application) => {
   const db = await connectDatabase();
 
+  app.use(bodyParser.json({ limit: '2mb'}));
   app.use(cookieparser(process.env.SECRET));
 
   const server = new ApolloServer({ 

@@ -1,4 +1,4 @@
-import { Quote } from '../../../lib/type';
+import { Quote, QuoteType } from '../../../lib/type';
 export interface QuoteArgs {
   id: string;
 }
@@ -18,4 +18,17 @@ export interface QuotesArgs {
 export interface QuotesData {
   total: number;
   result: Quote[];
+}
+
+export interface CreateQuoteInput {
+  quote: string;
+  author: string;
+  category: string;
+  period: number;
+  image: string;
+  type: QuoteType;
+}
+
+export interface CreateQuoteArgs {
+  input: CreateQuoteInput;
 }

@@ -16,6 +16,15 @@ export enum QuoteType {
   QUOTE = "QUOTE",
 }
 
+export interface CreateQuoteInput {
+  quote: string;
+  author: string;
+  category: string;
+  period: string;
+  image: string;
+  type: QuoteType;
+}
+
 export interface LogInInput {
   code: string;
 }

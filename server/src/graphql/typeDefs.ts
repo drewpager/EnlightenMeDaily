@@ -22,6 +22,15 @@ export const typeDefs = gql`
     MOST_RECENT
   }
 
+  input CreateQuoteInput {
+    quote: String!
+    author: String!
+    category: String!
+    period: String!
+    image: String!
+    type: QuoteType!
+  }
+
   type Quotes {
     total: Int!
     result: [Quote!]!
@@ -65,6 +74,7 @@ export const typeDefs = gql`
     # deleteQuote(id: ID!): Quote!
     logIn(input: LogInInput): Viewer!
     logOut: Viewer!
+    createQuote(input: CreateQuoteInput!): Quote!
     createBookmark: String!
   }
 `;
