@@ -426,11 +426,12 @@
   quotes:'\201C''\201D''\2018''\2019';
   top: 5px;
   right: 5px;
-  font-size:72px;
+  font-size:62px;
 	line-height:72px;
 	position: relative;
   font-family:serif;
   content:open-quote;
+  opacity: 60%;
 }
 .quote-details__quotation.ant-typography {
   margin-top: 5px !important;
