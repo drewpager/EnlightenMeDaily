@@ -10,16 +10,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb_1 = require("mongodb");
+const type_1 = require("../../../lib/type");
 const utils_1 = require("../../../lib/utils");
+const api_1 = require("../../../lib/api");
+const verifyCreateQuoteInput = ({ quote, author, type }) => {
+    if (quote.length < 50) {
+        throw new Error('Quote must be greater than 50 characters');
+    }
+    if (author.length < 3) {
+        throw new Error('Author name must be longer than 3 characters');
+    }
+    if (type !== type_1.QuoteType.Passage && type !== type_1.QuoteType.Quote) {
+        throw new Error('Type must be "QUOTE" or "PASSAGE"');
+    }
+};
 exports.quoteResolvers = {
     Query: {
-        quotes: (_root, { filter, limit, page }, { db }) => __awaiter(void 0, void 0, void 0, function* () {
+        quotes: (_root, { category, filter, limit, page }, { db }) => __awaiter(void 0, void 0, void 0, function* () {
+            //category here is the users search query
+            category;
             try {
                 const data = {
                     total: 0,
                     result: []
                 };
-                let cursor = yield db.quotes.find({});
+                let cursor = yield db.quotes.find({ $text: { $search: `${category}` } });
                 if (filter && filter === "OLDEST") {
                     cursor = cursor.sort({ period: -1 });
                 }
@@ -45,7 +60,7 @@ exports.quoteResolvers = {
                 // author may be string and therefore not equal to an ID. 
                 // possibly remove this
                 const viewer = yield utils_1.authorize(db, req);
-                if (viewer && viewer._id === quote.reporter) {
+                if (viewer && viewer._id) {
                     quote.authorized = true;
                 }
                 return quote;
@@ -59,12 +74,19 @@ exports.quoteResolvers = {
         id: (quote) => {
             return quote._id.toHexString();
         },
-        reporter: (quote, _args, { db }) => __awaiter(void 0, void 0, void 0, function* () {
-            const reporter = yield db.users.findOne({ _id: quote.reporter });
-            if (!reporter) {
-                throw new Error(`Failed to find reporter`);
+    },
+    Mutation: {
+        createQuote: (_root, { input }, { db, req }) => __awaiter(void 0, void 0, void 0, function* () {
+            verifyCreateQuoteInput(input);
+            let viewer = yield utils_1.authorize(db, req);
+            if (!viewer) {
+                throw new Error('Viewer not found. Please log in!');
             }
-            return reporter;
+            const imageUrl = yield api_1.Cloudinary.upload(input.image);
+            const insertResult = yield db.quotes.insertOne(Object.assign(Object.assign({ _id: new mongodb_1.ObjectId() }, input), { image: imageUrl }));
+            const insertedQuote = insertResult.ops[0];
+            yield db.users.updateOne({ _id: viewer._id }, { $push: { quotes: insertedQuote._id } });
+            return insertedQuote;
         })
     }
 };

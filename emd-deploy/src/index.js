@@ -19,10 +19,12 @@ const compression_1 = __importDefault(require("compression"));
 const graphql_1 = require("./graphql");
 const database_1 = require("./database");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const body_parser_1 = __importDefault(require("body-parser"));
 const port = process.env.PORT;
 // create a mount function to await MongoClient connect, ApolloServer, middleware, and port. 
 const mount = (app) => __awaiter(void 0, void 0, void 0, function* () {
     const db = yield database_1.connectDatabase();
+    app.use(body_parser_1.default.json({ limit: '2mb' }));
     app.use(cookie_parser_1.default(process.env.SECRET));
     const server = new apollo_server_express_1.ApolloServer({
         typeDefs: graphql_1.typeDefs,

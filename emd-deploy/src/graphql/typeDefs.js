@@ -23,6 +23,15 @@ exports.typeDefs = apollo_server_express_1.gql `
     MOST_RECENT
   }
 
+  input CreateQuoteInput {
+    quote: String!
+    author: String!
+    category: String!
+    period: String!
+    image: String!
+    type: QuoteType!
+  }
+
   type Quotes {
     total: Int!
     result: [Quote!]!
@@ -32,7 +41,6 @@ exports.typeDefs = apollo_server_express_1.gql `
     id: ID!
     quote: String!
     author: String!
-    reporter: User!
     category: String!
     period: Int!
     image: String!
@@ -60,12 +68,14 @@ exports.typeDefs = apollo_server_express_1.gql `
     quote(id: ID!): Quote!
     authUrl: String!
     user(id: ID!): User!
-    quotes(filter: QuoteFilter!, limit: Int!, page: Int!): Quotes!
+    quotes(category: String, filter: QuoteFilter!, limit: Int!, page: Int!): Quotes!
   }
 
   type Mutation {
     # deleteQuote(id: ID!): Quote!
     logIn(input: LogInInput): Viewer!
     logOut: Viewer!
+    createQuote(input: CreateQuoteInput!): Quote!
+    createBookmark: String!
   }
 `;
