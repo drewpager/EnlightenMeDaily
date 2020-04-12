@@ -13,7 +13,7 @@ import mapBackground from './assets/map-background.jpg';
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
-const PAGE_LIMIT = 4;
+const PAGE_LIMIT = 8;
 const PAGE_NUMBER = 1;
 
 export const Home = ({ history }: RouteComponentProps) => {
@@ -40,7 +40,7 @@ export const Home = ({ history }: RouteComponentProps) => {
     }
 
     if (data) {
-      return <HomeQuotes title="More Quotes" quotes={data.quotes.result} />;
+      return <HomeQuotes title="New Quotes" quotes={data.quotes.result} />;
     }
 
     return null;

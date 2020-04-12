@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Typography } from 'antd';
+import { Card, Typography, Tag } from 'antd';
 
 interface Props {
   quotes: {
@@ -21,6 +21,7 @@ export const QuoteCard = ({ quotes }: Props) => {
   return (
       <Link to={`/quote/${id}`}>
       <Card 
+        className="quote-card"
         hoverable 
         cover={
           <div 
@@ -37,8 +38,8 @@ export const QuoteCard = ({ quotes }: Props) => {
           <Text strong ellipsis className="quote-card__address">
             {/* Time period: {period} */}
           </Text>
-          <div className="quote-card__dimensions quote-card__dimensions--guests">
-            <Text>{category}</Text>
+          <div className="quote-details__about-items">
+            <Tag color={category.includes("leadership") ? "magenta" : "blue"}>{category}</Tag>
           </div>
         </div>
       </Card>

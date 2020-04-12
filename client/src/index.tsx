@@ -4,7 +4,7 @@ import './styles/index.css';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider, useMutation } from '@apollo/react-hooks';
-import './styles/index.css';
+import './styles/build/index.css';
 import { Home, wrappedQuote as Create, Quote, Quotes, Topics, NotFound, User, Login, Landing, Policy, AppHeader, AppFooter } from './sections';
 import { LOG_IN } from './lib/graphql/mutations/LogIn';
 import { LogIn as LogInData, LogInVariables } from './lib/graphql/mutations/LogIn/__generated__/LogIn';

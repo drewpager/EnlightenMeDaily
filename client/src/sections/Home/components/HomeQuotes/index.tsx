@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Typography } from 'antd';
+import { List, Typography, Row } from 'antd';
 import { QuoteCard } from '../../../../lib/components/QuoteCard';
 import { Quotes } from '../../../../lib/graphql/queries/Quotes/__generated__/Quotes';
 
@@ -19,9 +19,11 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
       <List 
         grid={{
           gutter: 8,
+          column: 2,
           xs: 1,
           sm: 2,
-          lg: 2
+          lg: 2,
+          xl: 4
         }}
         dataSource={quotes}
         renderItem={quote => (
@@ -31,6 +33,5 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
         )}
       />
     </div>
-    
   )
 }

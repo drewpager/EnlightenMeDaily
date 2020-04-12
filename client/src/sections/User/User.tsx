@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Typography, Result, Button } from 'antd';
-import { UserAddOutlined, ToolOutlined } from '@ant-design/icons';
 
 const { Content } = Layout;
-const { Title } = Typography;
 
 export const User = () => {
   return (

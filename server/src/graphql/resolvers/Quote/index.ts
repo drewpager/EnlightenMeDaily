@@ -4,6 +4,7 @@ import { Request } from 'express';
 import { Database, Quote, User, QuoteType } from '../../../lib/type';
 import { QuoteArgs, QuotesArgs, QuotesData, CreateQuoteArgs, CreateQuoteInput } from './types';
 import { authorize } from '../../../lib/utils';
+import { Cloudinary } from '../../../lib/api';
 
 const verifyCreateQuoteInput = ({ quote, author, type }: CreateQuoteInput) => {
   if (quote.length < 50) {
@@ -103,9 +104,12 @@ export const quoteResolvers: IResolvers = {
         throw new Error('Viewer not found. Please log in!');
       }
 
+      const imageUrl = await Cloudinary.upload(input.image)
+
       const insertResult = await db.quotes.insertOne({
         _id: new ObjectId(),
-        ...input
+        ...input,
+        image: imageUrl
       })
 
       const insertedQuote: Quote = insertResult.ops[0];
