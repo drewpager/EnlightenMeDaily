@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/index.css';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
+<<<<<<< HEAD
 import { ApolloProvider } from '@apollo/react-hooks';
 import './styles/index.css';
 import { Home, Create, Quote, Quotes, NotFound, User, Login, Landing, Policy } from './sections';
+=======
+import { ApolloProvider, useMutation } from '@apollo/react-hooks';
+import './styles/build/index.css';
+import { Home, wrappedQuote as Create, Quote, Quotes, Topics, NotFound, User, Login, Landing, Policy, AppHeader, AppFooter } from './sections';
+import { LOG_IN } from './lib/graphql/mutations/LogIn';
+import { LogIn as LogInData, LogInVariables } from './lib/graphql/mutations/LogIn/__generated__/LogIn';
+>>>>>>> 27632080de61ae9356be3d8ecfb1d200428abe23
 import * as serviceWorker from './serviceWorker';
-import { Layout } from 'antd';
+import { Layout, Affix, Spin } from 'antd';
+import { AppHeaderSkeleton, ErrorBanner } from './lib/components/';
 import { Viewer } from './lib/types';
+import { ScrollToTop } from './lib/utils/';
 
 const client = new ApolloClient({
-  uri: '/api'
+  uri: '/api',
+  request: async operation => {
+    const token = sessionStorage.getItem("token");
+    operation.setContext({
+      headers: {
+        "X-CSRF-TOKEN": token || ""
+      }
+    }); 
+  }
 });
 
 const initialViewer = {
-  _id: null,
+  id: null,
   token: null,
   avatar: null,
   didRequest: false
@@ -23,9 +41,44 @@ const initialViewer = {
 
 const App = () => {
   const [viewer, setViewer] = useState<Viewer>(initialViewer);
+  const [logIn, { error }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
+    onCompleted: data => {
+      if (data && data.logIn) {
+        setViewer(data.logIn);
+
+        if (data.logIn.token) {
+          sessionStorage.setItem("token", data.logIn.token);
+        } else {
+          sessionStorage.removeItem("token");
+        }
+      }
+    }
+  });
+
+  const logInRef = useRef(logIn);
+
+  useEffect(() => {
+    logInRef.current();
+  }, []);
+
+  if (!viewer.didRequest && !error) {
+    return (
+      <Layout className="app-skeleton">
+        <AppHeaderSkeleton />
+        <div className="app-skeleton__spin-section">
+          <Spin size="large" tip="Launching Enlighten Me Daily" />
+        </div>
+      </Layout>
+    )
+  }
+
+  const logInErrorBanner = error ? (
+  <ErrorBanner description="Failed to log in! Please try again" />
+  ) : null;
 
   return (
   <Router>
+<<<<<<< HEAD
     <Layout id="app">
       <Switch>
         <Route exact path="/" component={Landing} />
@@ -39,6 +92,27 @@ const App = () => {
         <Route component={NotFound} />
       </Switch>
     </Layout>
+=======
+    <ScrollToTop />
+      <Layout id="app">
+      {logInErrorBanner}
+        <Affix offsetTop={0} className="app__affix-header">
+          <AppHeader viewer={viewer} setViewer={setViewer}/>
+        </Affix>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
+          <Route exact path="/privacy-policy" component={Policy} />
+          <Route exact path="/subscribe" component={Landing} />
+          <Route exact path="/create" render={props => <Create {...props} viewer={viewer} />} />
+          <Route exact path="/quote/:id" component={Quote} />
+          <Route exact path="/topics/:category?" component={Topics} />
+          <Route exact path="/user/:id" component={User} />
+          <Route component={NotFound} />
+        </Switch>
+        <AppFooter />
+      </Layout>
+>>>>>>> 27632080de61ae9356be3d8ecfb1d200428abe23
   </Router>
   );
 }

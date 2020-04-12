@@ -12,10 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const api_1 = require("../../../lib/api");
+const Google_1 = require("../../../lib/api/Google");
 const crypto_1 = __importDefault(require("crypto"));
-const LogInViaGoogle = (code, token, db) => __awaiter(void 0, void 0, void 0, function* () {
-    const { user } = yield api_1.Google.logIn(code);
+const cookieOptions = {
+    httpOnly: true,
+    sameSite: true,
+    signed: true,
+    secure: process.env.NODE_ENV === "development" ? false : true
+};
+const logInViaCookie = (token, db, req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const updateRes = yield db.users.findOneAndUpdate({ _id: req.signedCookies.viewer }, { $set: { token } }, { returnOriginal: false });
+    let viewer = updateRes.value;
+    if (!viewer) {
+        res.clearCookie("viewer", cookieOptions);
+    }
+    return viewer;
+});
+const LogInViaGoogle = (code, token, db, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user } = yield Google_1.Google.logIn(code);
     if (!user) {
         throw new Error(`Failed to log in with Google`);
     }
@@ -52,13 +66,14 @@ const LogInViaGoogle = (code, token, db) => __awaiter(void 0, void 0, void 0, fu
         });
         viewer = insertResult.ops[0];
     }
+    res.cookie("viewer", userId, Object.assign(Object.assign({}, cookieOptions), { maxAge: 365 * 24 * 60 * 60 * 1000 }));
     return viewer;
 });
 exports.viewerResolvers = {
     Query: {
         authUrl: () => {
             try {
-                return api_1.Google.authUrl;
+                return Google_1.Google.authUrl;
             }
             catch (error) {
                 throw new Error(`failed to query Google auth url: ${error}`);
@@ -66,13 +81,13 @@ exports.viewerResolvers = {
         }
     },
     Mutation: {
-        logIn: (_root, { input }, { db }) => __awaiter(void 0, void 0, void 0, function* () {
+        logIn: (_root, { input }, { db, req, res }) => __awaiter(void 0, void 0, void 0, function* () {
             try {
                 const code = input ? input.code : null;
                 const token = crypto_1.default.randomBytes(16).toString("hex");
                 const viewer = code
-                    ? yield LogInViaGoogle(code, token, db)
-                    : undefined;
+                    ? yield LogInViaGoogle(code, token, db, res)
+                    : yield logInViaCookie(token, db, req, res);
                 if (!viewer) {
                     return { didRequest: true };
                 }
@@ -87,8 +102,9 @@ exports.viewerResolvers = {
                 throw new Error(`Failed to log in: ${error}`);
             }
         }),
-        logOut: () => {
+        logOut: (_root, _args, { res }) => {
             try {
+                res.clearCookie("viewer", cookieOptions);
                 return { didRequest: true };
             }
             catch (error) {

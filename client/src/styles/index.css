@@ -13,6 +13,10 @@
 }
 .landing {
   display: inline-block;
+<<<<<<< HEAD
+=======
+  width: 500px;
+>>>>>>> 27632080de61ae9356be3d8ecfb1d200428abe23
 }
 .landing-header {
   color: #1d226c;
@@ -101,53 +105,69 @@
   left: 0;
   z-index: 99;
 }
-.listing-card__cover-img {
+
+.quote-card__cover-img {
   width: 100%;
   height: 195px;
   background-size: cover;
   background-position: 50%;
 }
-.listing-card__rating-tag {
+.quote-card__rating-tag {
   position: absolute;
   top: 5px;
   right: 0;
 }
-.listing-card__description {
+.quote-card__description {
   padding-bottom: 20px;
 }
-.listing-card__price.ant-typography {
+.quote-card__price.ant-typography {
   color: #1d226c;
 }
-.listing-card__price.ant-typography span {
+.quote-card__quote.ant-typography {
+  color: #1d226c;
+  display: block;
+  overflow-wrap: break-word;
+  font-size: 13px;
+}
+.quote-card__quote-open::before {
+  quotes:'\201C';
+  font-family:serif;
+  content:open-quote;
+  position: absolute;
+  margin-left: -12px;
+  font-size:32px;
+	line-height:32px;
+}
+.quote-card__price.ant-typography span {
   color: #bfbfbf;
   font-weight: 400;
 }
-.listing-card__title.ant-typography,
-.listing-card__address.ant-typography {
+.quote-card__title.ant-typography,
+.quote-card__address.ant-typography {
   display: block;
 }
-.listing-card__dimensions i,
-.listing-card__dimensions span {
+.quote-card__dimensions i,
+.quote-card__dimensions span {
   padding-right: 10px;
   font-size: 13px;
 }
-.listing-card__dimensions span {
+.quote-card__dimensions span {
   color: #bfbfbf;
 }
-.listing-card__dimensions--guests {
+.quote-card__dimensions--guests {
   float: right;
 }
-.listing-card__dimensions--guests span {
+.quote-card__dimensions--guests span {
   padding-right: 0;
 }
 @media (max-width: 75em) {
-  .listing-card__dimensions--guests {
+  .quote-card__dimensions--guests {
     float: none;
     padding-bottom: 5px;
   }
 }
 @media (max-width: 48em) {
-  .listing-card__dimensions--guests {
+  .quote-card__dimensions--guests {
     float: right;
     padding-bottom: 0;
   }
@@ -201,20 +221,24 @@
   position: relative;
   bottom: 40px;
 }
-.home-listings {
+.home-quotes {
   padding: 40px 0 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: space-around;
 }
-.home-listings__title.ant-typography {
+.home-quotes__title.ant-typography {
   color: #1d226c;
   display: inline-block;
 }
-.home-listings-skeleton {
+.home-quotes-skeleton {
   padding: 40px 0 20px;
 }
-.home-listings-skeleton__card {
+.home-quotes-skeleton__card {
   margin: 5px 0;
 }
-.home-listings-skeleton__card-cover-img {
+.home-quotes-skeleton__card-cover-img {
   width: 100%;
   height: 195px;
 }
@@ -242,23 +266,23 @@
 .home__cta-section-button {
   margin-top: 20px;
 }
-.home__listings {
+.home__quotes {
   padding: 40px 0 20px;
 }
-.home__listings-title.ant-typography {
+.home__quotes-title.ant-typography {
   color: #1d226c;
   display: inline-block;
 }
-.home__listings-img-cover {
+.home__quotes-img-cover {
   width: 100%;
   cursor: pointer;
 }
 @media (max-width: 36em) {
-  .home__listings-img-cover {
+  .home__quotes-img-cover {
     padding: 10px 0;
   }
 }
-.home__listings-img {
+.home__quotes-img {
   width: 100%;
 }
 .host-content {
@@ -287,53 +311,53 @@
 .host__form-image-upload img {
   width: 125px;
 }
-.listing-bookings h3.ant-typography,
-.listing-bookings h4.ant-typography {
+.quote-bookings h3.ant-typography,
+.quote-bookings h4.ant-typography {
   color: #1d226c;
 }
-.listing-bookings__section {
+.quote-bookings__section {
   font-size: 15px;
   padding: 5px 0;
 }
-.listing-bookings__item {
+.quote-bookings__item {
   margin: 20px 0;
 }
-.listing-bookings__history {
+.quote-bookings__history {
   margin-bottom: 20px;
 }
-.listing-bookings__history > div {
+.quote-bookings__history > div {
   font-size: 13px;
   margin-bottom: 5px;
 }
-.listing-bookings__stars {
+.quote-bookings__stars {
   font-size: 13px;
 }
-.listing-booking {
+.quote-booking {
   max-width: 400px;
   margin: 0 auto;
   display: block;
 }
 @media (max-width: 62em) {
-  .listing-booking {
+  .quote-booking {
     padding-top: 40px;
   }
 }
-.listing-booking__card-title.ant-typography {
+.quote-booking__card-title.ant-typography {
   color: #1d226c;
   margin-bottom: 5px;
 }
-.listing-booking__card-title.ant-typography span {
+.quote-booking__card-title.ant-typography span {
   color: #bfbfbf;
   font-weight: 400;
 }
-.listing-booking__card {
+.quote-booking__card {
   width: 100%;
   text-align: center;
 }
-.listing-booking__card-date-picker {
+.quote-booking__card-date-picker {
   padding-bottom: 20px;
 }
-.listing-booking__card-cta {
+.quote-booking__card-cta {
   display: block;
   margin: 0 auto 10px;
 }
@@ -347,152 +371,172 @@
   padding: 10px;
   display: block;
 }
-.listing-booking-modal {
+.quote-booking-modal {
   text-align: center;
   padding-top: 10px;
 }
-.listing-booking-modal__intro-title.ant-typography,
-.listing-booking-modal__intro-title.ant-typography + h3.ant-typography {
+.quote-booking-modal__intro-title.ant-typography,
+.quote-booking-modal__intro-title.ant-typography + h3.ant-typography {
   margin-top: 5px;
 }
-.listing-booking-modal__charge-summary-total {
+.quote-booking-modal__charge-summary-total {
   font-weight: 700;
   font-size: 15px;
 }
-.listing-booking-modal__charge-summary-stripe {
+.quote-booking-modal__charge-summary-stripe {
   display: block;
   font-size: 11px;
   padding-top: 5px;
 }
-.listing-booking-modal__stripe-card-section {
+.quote-booking-modal__stripe-card-section {
   padding-bottom: 10px;
 }
-.listing-booking-modal__stripe-card {
+.quote-booking-modal__stripe-card {
   padding: 10px;
   margin: 40px 0;
   border: 1px solid #f0f1f2;
   box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
 }
-.listing-booking-modal__cta {
+.quote-booking-modal__cta {
   width: 100px;
 }
-.listing-details h3.ant-typography,
-.listing-details h4.ant-typography {
+.quote-details h3.ant-typography,
+.quote-details h4.ant-typography {
   color: #1d226c;
 }
-.listing-details__image {
+.quote-details__icon-twitter,
+.quote-details__icon-copy {
+  display: flex;
+  flex-flow: row wrap-reverse;
+  justify-content: flex-end;
+  font-size: 20px;
+  color: #1890ff;
+}
+
+.quote-details__image {
   width: 100%;
   height: 570px;
   background-size: cover;
   background-position: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 @media (max-width: 75em) {
-  .listing-details__image {
+  .quote-details__image {
     height: 380px;
   }
 }
-.listing-details__title.ant-typography {
+.quote-details__quotation::before {
+  quotes:'\201C''\201D''\2018''\2019';
+  top: 5px;
+  right: 5px;
+  font-size:62px;
+	line-height:72px;
+	position: relative;
+  font-family:serif;
+  content:open-quote;
+  opacity: 60%;
+}
+.quote-details__quotation.ant-typography {
   margin-top: 5px !important;
   margin-bottom: 5px;
 }
-.listing-details__title.ant-typography span {
+.quote-details__title.ant-typography span {
   color: #bfbfbf;
   font-weight: 400;
 }
-.listing-details__city-address.ant-typography,
-.listing-details__ratings.ant-typography {
+.quote-details__city-address.ant-typography,
+.quote-details__ratings.ant-typography {
   margin: 5px 0;
 }
-.listing-details__ratings.ant-typography {
+.quote-details__ratings.ant-typography {
   font-size: 13px;
 }
-.listing-details__host-name {
+.quote-details__host-name {
   font-family: Sacramento, cursive;
   display: inline-block;
   padding-left: 10px;
   position: relative;
   top: 5px;
 }
-.listing-details__section {
+.quote-details__section {
   font-size: 15px;
   padding: 5px 0;
 }
-.listing-details__about-items {
+.quote-details__about-items {
   padding-bottom: 20px;
 }
-.listing-details__amenities-row {
+.quote-details__amenities-row {
   padding: 5px 0;
 }
-.listing-details__amenities-row i,
-.listing-details__amenities-row span {
+.quote-details__amenities-row i,
+.quote-details__amenities-row span {
   padding: 0 2.5px;
 }
-.listing-details__booking-item {
+.quote-details__booking-item {
   margin: 20px 0;
 }
-.listing-details__booking-history {
+.quote-details__booking-history {
   margin-bottom: 20px;
 }
-.listing-details__booking-history > div {
+.quote-details__booking-history > div {
   font-size: 13px;
   margin-bottom: 5px;
 }
-.listing-details__booking-stars {
+.quote-details__booking-stars {
   font-size: 13px;
 }
-.listing {
+.quote {
   padding: 60px 120px;
 }
 @media (max-width: 75em) {
-  .listing {
+  .quote {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-.listings-filters {
+.quotes-filters {
   padding: 10px 0;
   background: #fff;
 }
-.listings-filters .ant-select-selection--single .ant-select-selection__rendered {
+.quotes-filters .ant-select-selection--single .ant-select-selection__rendered {
   margin-right: 30px;
 }
-.listings-filters span {
+.quotes-filters span {
   padding-right: 5px;
 }
-.listings-pagination {
+.quotes-pagination {
   padding: 10px 0;
   float: right;
 }
 @media (max-width: 48em) {
-  .listings-pagination {
+  .quotes-pagination {
     float: none;
   }
 }
-.listings-skeleton__card {
+.quotes-skeleton__card {
   margin: 5px 0;
 }
-.listings-skeleton__card-cover-img {
+.quotes-skeleton__card-cover-img {
   width: 100%;
   height: 195px;
 }
-.listings {
+.quotes {
   padding: 60px 120px;
 }
-@media (max-width: 75em) {
-  .listings {
+@media (max-width: 350em) {
+  .quotes {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-.listings--none .ant-typography {
+.quotes--none .ant-typography {
   font-size: 15px;
 }
-.listings__affix {
+.quotes__affix {
   background: #fff;
   padding: 10px 0;
 }
-.listings__title.ant-typography {
+.quotes__title.ant-typography {
   color: #1d226c;
 }
 .log-in {
@@ -586,17 +630,17 @@
 .user-bookings__booking-stars {
   font-size: 13px;
 }
-.user-listings {
+.user-quotes {
   padding-top: 40px;
 }
-.user-listings__title.ant-typography {
+.user-quotes__title.ant-typography {
   color: #1d226c;
   display: inline-block;
 }
-.user-listings .ant-list-pagination {
+.user-quotes .ant-list-pagination {
   padding-bottom: 20px;
 }
-.user-listings__description.ant-typography {
+.user-quotes__description.ant-typography {
   font-size: 15px;
 }
 .user-profile {
@@ -661,6 +705,28 @@ html {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+.app-footer {
+  position: relative;
+  background-color: #1d226c;
+  width: 100%;
+  margin-bottom: 0;
+}
+.app-footer__text.ant-typography {
+  color: white;
+  font-size: 20px;
+  font-family: inherit;
+}
+
+.app-footer__li {
+  list-style: none;
+  justify-items: left;
+}
+
+.app-footer__text-center {
+  color: white;
+  font-size: 14px;
 }
 @media (max-width: 36em) {
   .app__affix-footer {

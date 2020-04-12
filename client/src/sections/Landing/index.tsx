@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { EmailSignUpForm } from './form';
 import { Layout, Typography } from 'antd';
 import Icon from '@ant-design/icons';
@@ -10,16 +11,32 @@ const headSvg = () => (
 )
 
 const HeadIcon = (props: any) => <Icon component={headSvg} {...props} />; 
+=======
+import { Layout, Typography } from 'antd';
+import { EmailSignUpForm } from './form';
+import { PageSkeleton } from '../../lib/components';
+>>>>>>> 27632080de61ae9356be3d8ecfb1d200428abe23
 
 const { Content } = Layout;
 const { Title } = Typography;
 
 export const Landing = () => {
+  const LandingPage = EmailSignUpForm ? ( 
+    <div className="landing" id="signup-form" dangerouslySetInnerHTML={{ __html: EmailSignUpForm }}/>
+  ) : <PageSkeleton />;
+
   return (
     <Content className="landing-header__title">
+<<<<<<< HEAD
         <HeadIcon style={{ fontSize: '50px' }} className="landing-header__logo" />
         <Title>Enlighten Me Daily®</Title>
         <div className="landing" id="signup-form" dangerouslySetInnerHTML={{ __html: EmailSignUpForm }}/>
     </Content>
   );
+=======
+      <Title>Enlighten Me Daily®</Title>
+      {LandingPage}
+    </Content>
+  )
+>>>>>>> 27632080de61ae9356be3d8ecfb1d200428abe23
 }

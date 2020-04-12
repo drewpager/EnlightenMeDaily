@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.53f97575.chunk.css",
+    "main.js": "/static/js/main.eb4c8bbf.chunk.js",
+    "main.js.map": "/static/js/main.eb4c8bbf.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ef76e641.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ef76e641.js.map",
+    "static/css/2.29c1ed91.chunk.css": "/static/css/2.29c1ed91.chunk.css",
+    "static/js/2.56bc1565.chunk.js": "/static/js/2.56bc1565.chunk.js",
+    "static/js/2.56bc1565.chunk.js.map": "/static/js/2.56bc1565.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.6836a79581c4883eaae67de35bdd76a5.js": "/precache-manifest.6836a79581c4883eaae67de35bdd76a5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.29c1ed91.chunk.css.map": "/static/css/2.29c1ed91.chunk.css.map",
+    "static/css/main.53f97575.chunk.css.map": "/static/css/main.53f97575.chunk.css.map",
+    "static/js/2.56bc1565.chunk.js.LICENSE.txt": "/static/js/2.56bc1565.chunk.js.LICENSE.txt",
+    "static/media/brain.png": "/static/media/brain.163910e9.png",
+    "static/media/leadership.jpg": "/static/media/leadership.1cf9bce7.jpg",
+    "static/media/life-love.jpg": "/static/media/life-love.e8964eb7.jpg",
+    "static/media/map-background.jpg": "/static/media/map-background.c21df147.jpg",
+    "static/media/motivation.jpg": "/static/media/motivation.6887f9a3.jpg",
+    "static/media/positivity.jpg": "/static/media/positivity.51830736.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef76e641.js",
+    "static/css/2.29c1ed91.chunk.css",
+    "static/js/2.56bc1565.chunk.js",
+    "static/css/main.53f97575.chunk.css",
+    "static/js/main.eb4c8bbf.chunk.js"
+  ]
+}
