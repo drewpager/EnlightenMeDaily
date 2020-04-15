@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Typography, Input } from 'antd';
+import { Layout, Input } from 'antd';
 import { RouteComponentProps, Link, withRouter } from 'react-router-dom';
 
 import logo from './assets/brain.png'
@@ -8,7 +8,6 @@ import { Viewer } from '../../lib/types';
 import { displayErrorMessage } from '../../lib/utils';
 
 const { Header } = Layout;
-const { Text, Paragraph } = Typography;
 const { Search } = Input;
 
 interface Props {

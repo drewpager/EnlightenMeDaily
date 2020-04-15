@@ -40,12 +40,12 @@ export const HomeHero = ({ onSearch }: Props) => {
         </Col>
         <Col xs={0} md={6}>
           <Link to="/topics/love%20quotes">
-            <Card cover={<img src={loveImage} alt="man and woman navigating life and love quotes"/>}>Life and Love Quotes</Card>
+            <Card cover={<img src={loveImage} alt="man and woman navigating life and love quotes"/>}>Love Quotes</Card>
           </Link>
         </Col>
         <Col xs={0} md={6}>
           <Link to="/topics/positive%20quotes">
-            <Card cover={<img src={positivityImage} alt="woman radiates positivity and gratitude"/>}>Positivity Quotes</Card>
+            <Card cover={<img src={positivityImage} alt="woman radiates positivity and gratitude"/>}>Positive Quotes</Card>
           </Link>
         </Col>
       </Row>
