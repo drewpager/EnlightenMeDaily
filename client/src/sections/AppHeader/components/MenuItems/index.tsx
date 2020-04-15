@@ -11,7 +11,7 @@ import { displaySuccessNotification, displayErrorMessage } from '../../../../lib
 const { Item, SubMenu } = Menu;
 
 interface Props {
-  viewer: Viewer
+  viewer: Viewer;
   setViewer: (viewer: Viewer) => void;
 }
 
@@ -20,7 +20,7 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
     onCompleted: data => {
       if (data && data.logOut) {
         setViewer(data.logOut);
-        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("token"); 
         displaySuccessNotification("You have successfully logged out.");
       }
     },
@@ -38,12 +38,12 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
   const subMenuLogin = 
   viewer.id && viewer.avatar ? (
     <SubMenu title={<Avatar src={viewer.avatar} />}>
-      <Item key={`/user/${viewer.id}`}>
+      <Item key="/user">
         <Link to={`/user/${viewer.id}`}>
           Profile
         </Link>
       </Item>
-      <Item key="logout">
+      <Item key="/logout">
         <div onClick={handleLogOut}>
           Logout
         </div>

@@ -39,7 +39,7 @@ const App = () => {
     onCompleted: data => {
       if (data && data.logIn) {
         setViewer(data.logIn);
-
+        
         if (data.logIn.token) {
           sessionStorage.setItem("token", data.logIn.token);
         } else {
@@ -53,7 +53,7 @@ const App = () => {
 
   useEffect(() => {
     logInRef.current();
-  }, []);
+  }, []); 
 
   if (!viewer.didRequest && !error) {
     return (

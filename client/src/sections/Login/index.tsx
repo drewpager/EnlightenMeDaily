@@ -47,13 +47,13 @@ export const Login = ({ setViewer }: Props) => {
         }
       })
     }
-  }, [])
+  }, []) 
 
   const handleAuthorize = async () => {
     try {
       const { data } = await client.query<AuthUrlData>({
         query: AUTH_URL
-      })
+      });
       window.location.href = data.authUrl;
     } catch {
       displayErrorMessage("Failed to log in");

@@ -55,9 +55,9 @@ export const typeDefs = gql`
     quotes(limit: Int!, page: Int!): Quotes
   }
   type Viewer {
-    id: ID!
-    token: String!
-    avatar: String!
+    id: ID
+    token: String
+    avatar: String
     didRequest: Boolean!
   }
   input LogInInput {

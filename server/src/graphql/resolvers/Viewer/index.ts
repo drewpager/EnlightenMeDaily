@@ -137,7 +137,7 @@ export const viewerResolvers: IResolvers = {
       _root: undefined,
       _args: {},
       { res }: { res: Response }
-    ) => {
+    ): Viewer => {
       try {
         res.clearCookie("viewer", cookieOptions);
         return { didRequest: true };
