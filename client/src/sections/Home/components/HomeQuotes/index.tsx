@@ -19,11 +19,10 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
       <List 
         grid={{
           gutter: 8,
-          column: 2,
           xs: 1,
           sm: 2,
           lg: 2,
-          xl: 4
+          xl: 2
         }}
         dataSource={quotes}
         renderItem={quote => (

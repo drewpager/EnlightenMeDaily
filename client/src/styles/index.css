@@ -51,11 +51,11 @@
   flex-grow: 1;
   padding-right: 10px;
 }
-@media (max-width: 550px) {
+/* @media (max-width: 550px) {
   .app-header__search-input { 
     visibility: hidden;
   } 
-}
+} */
 .app-header__search-input .ant-input-group {
   border: 0;
   width: 100%;

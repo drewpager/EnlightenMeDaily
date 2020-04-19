@@ -4,7 +4,7 @@ import { Card, List, Skeleton } from 'antd';
 import quoteLoadingCardCover from '../../assets/listing-loading-card-cover.jpg';
 
 export const HomeQuoteSkeleton = () => {
-  const emptyData = [{}, {}, {}, {}];
+  const emptyData = [{}, {}, {}, {}, {}, {}, {}, {}];
   
   return (
     <div className="home-quotes__skeleton">
@@ -14,7 +14,7 @@ export const HomeQuoteSkeleton = () => {
           gutter: 8,
           xs: 1,
           sm: 2,
-          lg: 4
+          lg: 2
         }}
         dataSource={emptyData}
         renderItem={() => (
