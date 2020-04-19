@@ -13,8 +13,10 @@ export const HomeQuoteSkeleton = () => {
         grid={{
           gutter: 8,
           xs: 1,
-          sm: 2,
-          lg: 2
+          sm: 1,
+          md: 2,
+          lg: 2,
+          xl: 2
         }}
         dataSource={emptyData}
         renderItem={() => (

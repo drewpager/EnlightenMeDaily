@@ -18,9 +18,10 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
       </Title>
       <List 
         grid={{
-          gutter: 8,
+          // gutter: 8,
           xs: 1,
-          sm: 2,
+          sm: 1,
+          md: 2,
           lg: 2,
           xl: 2
         }}
