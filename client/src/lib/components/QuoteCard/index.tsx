@@ -16,7 +16,7 @@ interface Props {
 const { Text, Paragraph } = Typography;
 
 export const QuoteCard = ({ quotes }: Props) => {
-  const { id, quote, author, category, period, image } = quotes;
+  const { id, quote, author, category, image } = quotes;
 
   return (
       <Link to={`/quote/${id}`}>

@@ -33,7 +33,7 @@ const mount = async (app: Application) => {
   console.log(`Express is running on port: ${port}`);
 
   const quotes = await db.quotes.find({}).toArray();
-  console.log(quotes);
+  // console.log(quotes);
 } 
 
 // invoke the mount function calling an instantiation of Express

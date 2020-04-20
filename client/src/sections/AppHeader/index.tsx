@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Input, Button, Dropdown, Menu } from 'antd';
+import { Layout, Input, Dropdown } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RouteComponentProps, Link, withRouter } from 'react-router-dom';
 

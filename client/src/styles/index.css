@@ -275,7 +275,6 @@
   padding: 40px 0 20px;
   display: flex;
   flex-flow: column wrap;
-  border: 10px solid gold;
 }
 .home__quotes-title.ant-typography {
   color: #1d226c;

@@ -17,7 +17,6 @@ const PAGE_LIMIT = 3;
 
 export const RelatedQuotes = ({ categoryData }: Props) => {
   const cat: string = categoryData;
-  console.log(cat);
 
   const { loading, error, data } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
     variables: {
