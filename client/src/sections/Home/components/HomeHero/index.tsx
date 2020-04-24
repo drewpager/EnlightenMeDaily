@@ -39,8 +39,8 @@ export const HomeHero = ({ onSearch }: Props) => {
           </Link>
         </Col>
         <Col xs={0} md={6}>
-          <Link to="/topics/love%20quotes">
-            <Card cover={<img src={loveImage} alt="man and woman navigating life and love quotes"/>}>Love Quotes</Card>
+          <Link to="/topics/life%20quotes">
+            <Card cover={<img src={loveImage} alt="man and woman navigating life and love quotes"/>}>Life Quotes</Card>
           </Link>
         </Col>
         <Col xs={0} md={6}>

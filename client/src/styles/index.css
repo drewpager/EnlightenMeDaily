@@ -109,8 +109,15 @@
 }
 
 .quote-card {
-  flex: 1;
-  margin: 5px;
+  margin: 5px; 
+}
+
+.quote-card:nth-child(2n+1) {
+  order: 1;
+}
+
+.quote-card:nth-child(2n+2) {
+  order: 2;
 }
 
 .quote-card__cover-img {
@@ -232,7 +239,13 @@
   padding: 40px 0 20px;
   display: flex;
   flex-flow: column wrap;
+  max-height: 2500px;
 }
+.home-quotes::before,
+.home-quotes::after {
+  flex-basis: 100%;
+}
+
 .home-quotes__title.ant-typography {
   color: #1d226c;
   display: inline-block;
@@ -275,7 +288,6 @@
   padding: 40px 0 20px;
   display: flex;
   flex-flow: column wrap;
-  border: 10px solid gold;
 }
 .home__quotes-title.ant-typography {
   color: #1d226c;
