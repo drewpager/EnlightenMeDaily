@@ -18,7 +18,7 @@ export const AppFooter = () => {
         <li><Link to="topics/motivational-quotes">Motivational Quotes</Link></li>
         <li><Link to="topics/positive-quotes">Positive Quotes</Link></li>
         <li><Link to="topics/leadership-quotes">Leadership Quotes</Link></li>
-        <li><Link to="topics/love-quotes">Love Quotes</Link></li>
+        <li><Link to="topics/life-quotes">Life Quotes</Link></li>
       </ul>
       <Divider />
       <Text className="app-footer__text-center">Enlighten Me Daily® 2020</Text>

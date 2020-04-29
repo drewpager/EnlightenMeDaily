@@ -50,7 +50,7 @@ export const Home = ({ history }: RouteComponentProps) => {
       <HomeHero onSearch={onSearch}/>
       <div className="home__cta-section">
         <Title level={2} className="home__cta-section-title">
-          Receive a Newsletter Built Just for You
+          Receive Daily Quotes and More in Your Inbox 
         </Title>
         <Paragraph>Subscribe now for a daily dashboard of what motivates you.</Paragraph>
         <Link to="/subscribe" className="ant-btn ant-btn-primary ant-btn-lg home__cta-section-button">
