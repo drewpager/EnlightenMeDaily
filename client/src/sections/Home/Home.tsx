@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { Layout, Typography } from 'antd';
-import { HomeHero, HomeQuotes, HomeQuoteSkeleton } from './components/';
+import { HomeHero, HomeQuotes, HomeQuoteSkeleton, HomeDailyQuote } from './components/';
 import { displayErrorMessage } from '../../lib/utils';
 import { QUOTES } from '../../lib/graphql/queries/Quotes';
 import { Quotes as QuotesData, QuotesVariables } from '../../lib/graphql/queries/Quotes/__generated__/Quotes';
@@ -45,6 +45,13 @@ export const Home = ({ history }: RouteComponentProps) => {
 
     return null;
   }
+
+  const renderDailyQuote = () => {
+    if (data && data.quotes) {
+      return <HomeDailyQuote />;
+    }
+  }
+
   return (
     <Content className="home" style={{ backgroundImage: `url(${mapBackground})`}}>
       <HomeHero onSearch={onSearch}/>
@@ -56,6 +63,7 @@ export const Home = ({ history }: RouteComponentProps) => {
         <Link to="/subscribe" className="ant-btn ant-btn-primary ant-btn-lg home__cta-section-button">
           Subscribe
         </Link>
+        {renderDailyQuote()}
         {renderQuotesSection()}
       </div>
     </Content>
