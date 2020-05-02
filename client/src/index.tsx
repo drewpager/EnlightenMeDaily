@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
 import './styles/index.css';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
@@ -12,6 +14,16 @@ import { Layout, Affix, Spin } from 'antd';
 import { AppHeaderSkeleton, ErrorBanner } from './lib/components/';
 import { Viewer } from './lib/types';
 import { ScrollToTop } from './lib/utils/';
+
+ReactGA.initialize('UA-132191303-2');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+const history = createBrowserHistory();
+
+history.listen(location => {
+  ReactGA.set({ page: location.pathname }); // update the users current page
+  ReactGA.pageview(location.pathname); // record a pageview for the given page
+})
 
 const client = new ApolloClient({
   uri: '/api',
@@ -77,16 +89,16 @@ const App = () => {
         <Affix offsetTop={0} className="app__affix-header">
           <AppHeader viewer={viewer} setViewer={setViewer}/>
         </Affix>
-        <Switch>
-          <Route exact path="/" component={Home} />
+        <Switch> 
+          <Route exact path="/" component={Home} history={history} />
           <Route exact path="/login" render={props => <Login {...props} setViewer={setViewer} />} />
-          <Route exact path="/privacy-policy" component={Policy} />
-          <Route exact path="/subscribe" component={Landing} />
+          <Route exact path="/privacy-policy" component={Policy} history={history}/>
+          <Route exact path="/subscribe" component={Landing} history={history}/>
           <Route exact path="/create" render={props => <Create {...props} viewer={viewer} />} />
-          <Route exact path="/quote/:id" component={Quote} />
-          <Route exact path="/topics/:category?" component={Topics} />
-          <Route exact path="/user/:id" component={User} />
-          <Route component={NotFound} />
+          <Route exact path="/quote/:id" component={Quote} history={history}/>
+          <Route exact path="/topics/:category?" component={Topics} history={history}/>
+          <Route exact path="/user/:id" component={User} history={history}/>
+          <Route component={NotFound} history={history}/>
         </Switch>
         <AppFooter />
       </Layout>
