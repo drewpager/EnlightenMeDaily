@@ -62,6 +62,7 @@ export const Home = ({ history }: RouteComponentProps) => {
     <Content className="home" style={{ backgroundImage: `url(${mapBackground})`}}>
       <HomeHero onSearch={onSearch}/>
       <div className="home__cta-section">
+        {renderDailyQuote()}
         <Title level={2} className="home__cta-section-title">
           Receive Daily Quotes and More in Your Inbox 
         </Title>
@@ -69,7 +70,6 @@ export const Home = ({ history }: RouteComponentProps) => {
         <Link to="/subscribe" className="ant-btn ant-btn-primary ant-btn-lg home__cta-section-button">
           Subscribe
         </Link>
-        {renderDailyQuote()}
         {renderQuotesSection()}
       </div>
     </Content>
