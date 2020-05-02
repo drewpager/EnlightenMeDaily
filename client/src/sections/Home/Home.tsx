@@ -47,9 +47,15 @@ export const Home = ({ history }: RouteComponentProps) => {
   }
 
   const renderDailyQuote = () => {
-    if (data && data.quotes) {
-      return <HomeDailyQuote />;
+    if (loading) {
+      return <h4>loading...</h4>;
     }
+
+    if (data && data.quotes && data.quotes.result) {
+      return <HomeDailyQuote />; 
+    } 
+
+    return null;
   }
 
   return (
