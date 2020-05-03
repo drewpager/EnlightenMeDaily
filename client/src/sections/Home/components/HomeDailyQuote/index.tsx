@@ -16,13 +16,19 @@ interface QuoteProps {
   id: string;
 }
 
-export const HomeDailyQuote: any = () => {
-  const [DailyQuote, setDailyQuote] = useState<QuoteProps>();
+const initialQuote = {
+  quote: 'Leadership is about vision and responsibility, not power.',
+  author: 'Seth Berkley',
+  id: '5e91f357e50e513beb89fc2c'
+}
+
+export const HomeDailyQuote = () => {
+  const [DailyQuote, setDailyQuote] = useState<QuoteProps>(initialQuote);
   const { error, loading, data } = useQuery<QuotesData, QuotesVariables>(QUOTES, {
     variables: {
       category: "leadership, life, motivation",
       filter: QuoteFilter.MOST_RECENT,
-      limit: 1,
+      limit: 365,
       page: 1,
     }
   })
@@ -34,11 +40,13 @@ export const HomeDailyQuote: any = () => {
       const result = Math.floor(step2) + min;
       return result;
     }
+    
     let item;
     
     for (item in data.quotes) {
       const count: number = data.quotes.total;
       const random: number = getRandomNumber(0, count + 1);
+      if (random > -1 && random < 366) { continue; }
       const initTime: Date = new Date();
       const localTime: number = initTime.getTimezoneOffset() * 60000;
       const intNow: number = initTime.getTime() - localTime;
@@ -48,12 +56,12 @@ export const HomeDailyQuote: any = () => {
       console.log('QuoteIndex: ', quoteIndex);
       
       if (quoteIndex && quoteIndex >= 0) {
-        let quote = data.quotes.result[quoteIndex].quote;
-        let author = data.quotes.result[quoteIndex].author;
-        let id = data.quotes.result[quoteIndex].id;
+        const { quote, author, id } = data.quotes.result[0];
+        // let quote = data.quotes.result[0].quote;
+        // let author = data.quotes.result[0].author;
+        // let id = data.quotes.result[0].id;
         console.log({quote, author, id});
         setDailyQuote({quote, author, id});
-        // return;
       }
     }
 
@@ -67,12 +75,16 @@ export const HomeDailyQuote: any = () => {
   
     if (DailyQuote && DailyQuote.quote) {
       return (
-        <Content>
-          <Title level={3}>Quote of the Day for {new Date().getMonth() + 1}/{new Date().getDate()}</Title>
-          <h3>{DailyQuote.quote}</h3>
-          <h4>{DailyQuote.author}</h4>
-          <Link to={`/quote/${DailyQuote.id}`}>Read More</Link>
-        </Content>
+        <div>
+          <div className="daily-quote__title">
+            <h1>Quote of the Day for <span className="date-title">{new Date().getMonth() + 1}/{new Date().getDate()}</span></h1>
+          </div>
+          <div className="daily-quote">
+            <h3>{DailyQuote.quote}</h3>
+            <h4>– {DailyQuote.author}</h4>
+            {/* <Link to={`/quote/${DailyQuote.id}`}>Read More</Link> */}
+          </div>
+        </div>
       );
     };
   }
