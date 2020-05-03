@@ -280,6 +280,7 @@
 }
 .home__cta-section-title.ant-typography {
   color: #1d226c;
+  padding-top: 15px;
 }
 .home__cta-section-button {
   margin-top: 20px;
@@ -304,6 +305,56 @@
 }
 .home__quotes-img {
   width: 100%;
+}
+.daily-quote__title h1{
+  /* display: inline-block; */
+  font-size: 32px;
+  color: #1d226c;
+}
+
+.date-title {
+  text-decoration: underline #1890ff;
+}
+
+.daily-quote {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #000;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+  margin: 20px auto;
+  align-self: center;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+}
+.daily-quote::after {
+  position: absolute;
+  content: "”";
+  color: #1890ff;
+  font-size: 10rem;
+  line-height: 0;
+  bottom: -43px;
+  right: 30px;
+}
+
+.daily-quote h3 {
+    position: relative;
+    color: #000;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+}
+.daily-quote h4 {
+  position: relative;
+  color: #000;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  margin: 20px;
 }
 .host-content {
   display: flex;
