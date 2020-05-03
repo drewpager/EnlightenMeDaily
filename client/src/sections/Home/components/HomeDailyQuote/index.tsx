@@ -17,9 +17,9 @@ interface QuoteProps {
 }
 
 const initialQuote = {
-  quote: 'Leadership is about vision and responsibility, not power.',
-  author: 'Seth Berkley',
-  id: '5e91f357e50e513beb89fc2c'
+  quote: "Leadership is not about a title or a designation. It's about impact, influence and inspiration. Impact involves getting results, influence is about spreading the passion you have for your work, and you have to inspire teammates and customers.",
+  author: 'Robin S. Sharma',
+  id: '5e91f357e50e513beb89fc27'
 }
 
 export const HomeDailyQuote = () => {
