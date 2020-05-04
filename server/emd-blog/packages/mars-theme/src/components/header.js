@@ -8,7 +8,7 @@ const Header = ({ state }) => {
   return (
     <>
       <Container>
-        <StyledLink link="/">
+        <StyledLink link="http://localhost:3000/">
           <Title>{state.frontity.title}</Title>
         </StyledLink>
         <Description>{state.frontity.description}</Description>

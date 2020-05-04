@@ -1,4 +1,5 @@
 import React from 'react';
+import Path from 'path';
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import { Button, Menu, Avatar, Input } from 'antd';
@@ -63,6 +64,11 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
         <Link to="/subscribe">
           Subscribe
         </Link>
+      </Item>
+      <Item key="daily-dose">
+        <Button onClick={() => window.location.port='3001'}>
+          Daily Dose
+        </Button>
       </Item>
       {subMenuLogin}
     </Menu>

@@ -26,8 +26,8 @@ const settings = {
               "/category/travel/"
             ],
             [
-              "KC",
-              "/author/kevin/"
+              "motivation",
+              "/category/motivation/"
             ],
             [
               "About Us",
@@ -45,7 +45,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "https://clevertap.com/wp-json"
+          "api": "http://localhost:8888/wp-json"
         }
       }
     },
