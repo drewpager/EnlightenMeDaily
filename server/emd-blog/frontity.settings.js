@@ -4,7 +4,7 @@ const settings = {
     "frontity": {
       "url": "https://test.frontity.io",
       "title": "The Daily Dose",
-      "description": "WordPress installation for Frontity development"
+      "description": "Interesting Information in Under 5 minutes. Medicinal Motivation, Don't Forget To Take Your Daily Dose."
     }
   },
   "packages": [
@@ -18,14 +18,6 @@ const settings = {
               "/"
             ],
             [
-              "mobile",
-              "/category/mobile/"
-            ],
-            [
-              "Travel",
-              "/category/travel/"
-            ],
-            [
               "motivation",
               "/category/motivation/"
             ],
@@ -35,7 +27,7 @@ const settings = {
             ]
           ],
           "featured": {
-            "showOnList": false,
+            "showOnList": true,
             "showOnPost": false
           }
         }

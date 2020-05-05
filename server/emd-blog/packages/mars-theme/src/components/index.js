@@ -67,7 +67,7 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1f38c5;
+  background-color: #1890ff;
 `;
 
 const Main = styled.div`
