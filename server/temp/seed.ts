@@ -3,14 +3,14 @@ require("dotenv").config();
 import { ObjectId } from 'mongodb';
 import { connectDatabase } from '../src/database';
 import { Quote, QuoteType, User, Bookmarking } from '../src/lib/type';
-import { quotes } from './quotes';
+import { quoteSmall } from './quote-small';
 
 const seed = async () => {
   try {
     console.log(`[seed]: attempting to seed the database`)
 
     const db = await connectDatabase();
-    quotes;
+    quoteSmall;
 
     const bookmarkings: Bookmarking[] = [
       {
@@ -56,7 +56,7 @@ const seed = async () => {
         ]
       } 
     ];
-    for (const quote of quotes) {
+    for (const quote of quoteSmall) {
       await db.quotes.insertOne(quote);
     }
 
