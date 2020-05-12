@@ -91,7 +91,7 @@ export const Create = ({ viewer, form }: Props & FormComponentProps) => {
 
       const input = {
         ...values,
-        image: imageBase64Value
+        image: imageBase64Value,
       };
 
       createQuote({
@@ -175,7 +175,8 @@ export const Create = ({ viewer, form }: Props & FormComponentProps) => {
           })(
             <Input.TextArea 
               rows={3}
-              maxLength={500} 
+              maxLength={500}
+              minLength={10} 
               placeholder={`He who is prudent and lies in wait for an enemy who is not, will be victorious.`} 
             />
           )}

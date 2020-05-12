@@ -238,8 +238,8 @@
 .home-quotes {
   padding: 40px 0 20px;
   display: flex;
-  flex-flow: column wrap;
-  max-height: 2500px;
+  flex-flow: row wrap;
+  max-height: 100%;
 }
 .home-quotes::before,
 .home-quotes::after {
@@ -354,7 +354,7 @@
     position: relative;
     color: #000;
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1;
     margin: 20px;
 }
@@ -793,6 +793,8 @@ html {
   background-color: #1d226c;
   width: 100%;
   margin-bottom: 0;
+  height: 300px;
+  margin-top: -50px;
 }
 .app-footer__text.ant-typography {
   color: white;
