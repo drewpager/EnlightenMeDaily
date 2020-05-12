@@ -17,9 +17,9 @@ interface QuoteProps {
 }
 
 const initialQuote = {
-  quote: "Leadership is not about a title or a designation. It's about impact, influence and inspiration. Impact involves getting results, influence is about spreading the passion you have for your work, and you have to inspire teammates and customers.",
-  author: 'Robin S. Sharma',
-  id: '5e91f357e50e513beb89fc27'
+  quote: "Ultimately, leadership is not about glorius crowning acts. It's about keeping your team focused on a goal and motivated to do their best to achieve it, especially when the stakes are high and the consequences really matter. It is about laying the groundwork for others' success, and then standing back and letting them shine.",
+  author: 'Chris Hadfield',
+  id: '5eb9699a9e25ed106b065d3e'
 }
 
 export const HomeDailyQuote = () => {
