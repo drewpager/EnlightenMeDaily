@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, Row, Input, Typography } from 'antd';
 
-import leadershipImage from '../../assets/leadership.jpg';
-import motivationImage from '../../assets/motivation.jpg';
-import loveImage from '../../assets/life-love.jpg';
-import positivityImage from '../../assets/positivity.jpg';
+const leadershipImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/leadership_ler0gg.jpg";
+const motivationImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/motivation_fdh0ih.jpg";
+const loveImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/life-love_linox3.jpg";
+const positivityImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/positivity_jakbep.jpg"
 
 const { Title } = Typography;
 const { Search } = Input;

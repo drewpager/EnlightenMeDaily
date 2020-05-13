@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, List, Skeleton } from 'antd';
 
-import quoteLoadingCardCover from '../../assets/listing-loading-card-cover.jpg';
+const quoteLoadingCardCover = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/listing-loading-card-cover_znf3uw.png";
 
 export const HomeQuoteSkeleton = () => {
   const emptyData = [{}, {}, {}, {}, {}, {}, {}, {}];

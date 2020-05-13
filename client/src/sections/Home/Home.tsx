@@ -8,7 +8,7 @@ import { QUOTES } from '../../lib/graphql/queries/Quotes';
 import { Quotes as QuotesData, QuotesVariables } from '../../lib/graphql/queries/Quotes/__generated__/Quotes';
 import { QuoteFilter } from '../../lib/graphql/globalTypes';
 
-import mapBackground from './assets/map-background.jpg';
+const mapBackground = "https://res.cloudinary.com/drewpager/image/upload/v1589379467/enlighten-me-daily/map-background_gfvu9s.png"
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
