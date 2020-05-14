@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, Row, Input, Typography } from 'antd';
 
-const leadershipImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/leadership_ler0gg.jpg";
-const motivationImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/motivation_fdh0ih.jpg";
-const loveImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/life-love_linox3.jpg";
-const positivityImage = "https://res.cloudinary.com/drewpager/image/upload/v1589379464/enlighten-me-daily/positivity_jakbep.jpg"
+const leadershipImage = "https://res.cloudinary.com/drewpager/image/upload/t_Jpeg2000/v1589379464/enlighten-me-daily/leadership_ler0gg.jp2";
+const motivationImage = "https://res.cloudinary.com/drewpager/image/upload/t_Jpeg2000/v1589379464/enlighten-me-daily/motivation_fdh0ih.jp2";
+const loveImage = "https://res.cloudinary.com/drewpager/image/upload/t_Jpeg2000/v1589379464/enlighten-me-daily/life-love_linox3.jp2";
+const positivityImage = "https://res.cloudinary.com/drewpager/image/upload/t_Jpeg2000/v1589379464/enlighten-me-daily/positivity_jakbep.jp2";
 
 const { Title } = Typography;
 const { Search } = Input;
