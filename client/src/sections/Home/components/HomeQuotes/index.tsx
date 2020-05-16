@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { List, Typography } from 'antd';
 import { QuoteCard } from '../../../../lib/components/QuoteCard';
 import { Quotes } from '../../../../lib/graphql/queries/Quotes/__generated__/Quotes';
@@ -18,7 +18,7 @@ export const HomeQuotes = ({ title, quotes }: Props) => {
       </Title>
       <List 
         grid={{
-          // gutter: 8,
+          gutter: 8,
           xs: 1,
           sm: 1,
           md: 2,
