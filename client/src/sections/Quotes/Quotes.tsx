@@ -1,6 +1,6 @@
 import React from 'react';
 import "./styles/Quotes.css";
-import { List, Avatar, Button, Spin, Alert, Layout } from 'antd';
+import { List, Avatar, Button, Spin, Alert } from 'antd';
 import { gql } from 'apollo-boost';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Quotes as QuotesData } from './__generated__/Quotes';

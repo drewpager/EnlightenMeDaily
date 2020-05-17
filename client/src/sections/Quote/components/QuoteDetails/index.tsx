@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar, Divider, Tag, Typography, Button, Tooltip } from 'antd';
-import { CopyOutlined, TwitterOutlined }  from '@ant-design/icons';
+import { Avatar, Divider, Tag, Typography, Tooltip } from 'antd';
+import { CopyOutlined }  from '@ant-design/icons';
 import { Quote as QuoteData } from '../../../../lib/graphql/queries/Quote/__generated__/Quote';
 import { copyToClipboard } from '../../../../lib/utils';
 
@@ -11,7 +11,7 @@ interface Props {
 const { Title } = Typography;
 
 export const QuoteDetails = ({ quoteData }: Props) => {
-  const { quote, author, category, period, image, type } = quoteData;
+  const { quote, author, category, image } = quoteData;
 
   return (
     <div className="quote-details">
@@ -26,7 +26,6 @@ export const QuoteDetails = ({ quoteData }: Props) => {
         <Tooltip placement="bottomRight" title="Copy quote to clipboard">
           <CopyOutlined className="quote-details__icon-copy" onClick={() => {copyToClipboard(quote)}}/>
         </Tooltip>
-          {/* <TwitterOutlined className="quote-details__icon-twitter" /> */}
       </div>
 
       <Divider />

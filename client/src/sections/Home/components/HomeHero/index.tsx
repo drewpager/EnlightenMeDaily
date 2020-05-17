@@ -35,7 +35,7 @@ export const HomeHero = ({ onSearch }: Props) => {
         </Col>
         <Col xs={12} md={6}>
           <Link to="/topics/leadership%20quotes">
-            <Card cover={<img src={leadershipImage} alt="orchestra conductor leadership image"/>}>Leadership Quotes</Card>
+            <Card cover={<img src={leadershipImage} alt="orchestra conductor leadership"/>}>Leadership Quotes</Card>
           </Link>
         </Col>
         <Col xs={0} md={6}>

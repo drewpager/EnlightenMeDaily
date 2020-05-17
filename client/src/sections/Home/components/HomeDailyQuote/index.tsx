@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUOTES } from '../../../../lib/graphql/queries/Quotes';
 import { Quotes as QuotesData, QuotesVariables } from '../../../../lib/graphql/queries/Quotes/__generated__/Quotes';

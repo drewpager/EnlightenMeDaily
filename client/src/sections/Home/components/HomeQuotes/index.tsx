@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { List, Typography } from 'antd';
 import { QuoteCard } from '../../../../lib/components/QuoteCard';
 import { Quotes } from '../../../../lib/graphql/queries/Quotes/__generated__/Quotes';

@@ -245,7 +245,7 @@ export const Create = ({ viewer, form }: Props & FormComponentProps) => {
                 onChange={handleImageUpload}
               >
                 {imageBase64Value ? (
-                  <img src={imageBase64Value} alt="accompanying quote image" />
+                  <img src={imageBase64Value} alt="accompanying quote" />
                 ): (
                   <div>
                     {imageLoading ? <LoadingOutlined /> : <PlusSquareOutlined />}
