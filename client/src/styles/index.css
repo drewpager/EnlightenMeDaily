@@ -128,7 +128,7 @@
   color: #1d226c;
 }
 .quote-card__quote.ant-typography {
-  color: #1d226c;
+  color: #000;
   /* display: block; */
   /* overflow-wrap: break-word; */
   text-align: left;
@@ -146,8 +146,9 @@
   position: absolute;
   margin-left: -20px;
   font-size:80px;
-  opacity: 10%;
-	line-height:32px;
+  opacity: 30%;
+  line-height:32px;
+  color: #1890ff;
 }
 
 .quote-card__price.ant-typography span {
