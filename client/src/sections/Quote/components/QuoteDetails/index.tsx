@@ -15,10 +15,6 @@ export const QuoteDetails = ({ quoteData }: Props) => {
 
   return (
     <div className="quote-details">
-      <div 
-        style={{ backgroundImage: `url(${image}` }}
-        className="quote-details__image"
-      />
       <div className="quote-details__information">
         <Title level={3} className="quote-details__quotation">
           {quote}
@@ -27,7 +23,10 @@ export const QuoteDetails = ({ quoteData }: Props) => {
           <CopyOutlined className="quote-details__icon-copy" onClick={() => {copyToClipboard(quote)}}/>
         </Tooltip>
       </div>
-
+      {/* <div 
+        style={{ backgroundImage: `url(${image}` }}
+        className="quote-details__image"
+      /> */}
       <Divider />
 
       <div className="quote-details__section">

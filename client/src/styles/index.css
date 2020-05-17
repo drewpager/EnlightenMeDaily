@@ -13,7 +13,9 @@
 }
 .landing {
   display: inline-block;
-  width: 500px;
+  margin-bottom: 40px;
+  width: 50%;
+  /* width: 500px; */
 }
 .landing-header {
   color: #1d226c;
@@ -21,10 +23,11 @@
 }
 .landing-header__logo {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 10px;
   align-items: center;
 }
 .landing-header__title {
+  margin-top: 10px;
   text-align: center;
 }
 .app-header {
@@ -522,18 +525,29 @@
 }
 .quote-details__quotation::before {
   quotes:'\201C''\201D''\2018''\2019';
-  top: 5px;
+  top: 15px;
   right: 5px;
   font-size:62px;
-	line-height:72px;
+	line-height:2px;
 	position: relative;
   font-family:serif;
   content:open-quote;
   opacity: 60%;
 }
+
+.quote-details__quotation::after {
+  quotes:'\201C''\201D''\2018''\2019';
+  top: 35px;
+  font-size:62px;
+	line-height:2px;
+	position: relative;
+  font-family:serif;
+  content:close-quote;
+  opacity: 60%;
+}
 .quote-details__quotation.ant-typography {
-  margin-top: 5px !important;
-  margin-bottom: 5px;
+  margin: 5px !important;
+  padding-top: 10px;
 }
 .quote-details__title.ant-typography span {
   color: #bfbfbf;
