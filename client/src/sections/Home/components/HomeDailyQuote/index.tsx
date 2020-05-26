@@ -13,9 +13,9 @@ interface QuoteProps {
 }
 
 const initialQuote = {
-  quote: "Ultimately, leadership is not about glorius crowning acts. It's about keeping your team focused on a goal and motivated to do their best to achieve it, especially when the stakes are high and the consequences really matter. It is about laying the groundwork for others' success, and then standing back and letting them shine.",
-  author: 'Chris Hadfield',
-  id: '5eb9699a9e25ed106b065d3e'
+  quote: "My mother was in the Army Reserve for six years. She taught me the importance of following rules, finishing what I start, never giving up, leadership skills, teamwork, staying positive, motivated and how to pack the military way when I'm traveling!",
+  author: 'Laurie Hernandez',
+  id: '5ebbf5688c0bf43b28c601dd'
 }
 
 
