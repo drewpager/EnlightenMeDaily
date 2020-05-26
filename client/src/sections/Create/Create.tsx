@@ -215,10 +215,9 @@ export const Create = ({ viewer, form }: Props & FormComponentProps) => {
             ]
           })(
             <Radio.Group>
-              <Radio.Button value="philosophy">Philosophy</Radio.Button>
               <Radio.Button value="leadership">Leadership</Radio.Button>
               <Radio.Button value="positive">Positive</Radio.Button>
-              <Radio.Button value="love">Love</Radio.Button>
+              <Radio.Button value="love">Life/Love</Radio.Button>
               <Radio.Button value="motivation">Motivation</Radio.Button>
             </Radio.Group>
           )}

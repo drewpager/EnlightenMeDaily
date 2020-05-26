@@ -39,8 +39,19 @@ export const HomeDailyQuote = () => {
     }
   }
 
+  // const randomQuote = (data: any) => {
+  //   let r = Math.floor(Math.random() * 365);
+  //   const i = r;
+  //   function setQuote(r: number) {
+  //     const { quote, author, id } = data.quotes.result[i];
+  //     setDailyQuote({quote, author, id});
+  //   }
+  //   return setQuote(r);
+  // }
+
   if (data && data.quotes) {
     generator(data);
+    // randomQuote(data);
   }
 
   if (loading) {
