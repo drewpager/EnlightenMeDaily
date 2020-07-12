@@ -13,9 +13,9 @@ interface QuoteProps {
 }
 
 const initialQuote = {
-  quote: "My mother was in the Army Reserve for six years. She taught me the importance of following rules, finishing what I start, never giving up, leadership skills, teamwork, staying positive, motivated and how to pack the military way when I'm traveling!",
-  author: 'Laurie Hernandez',
-  id: '5ebbf5688c0bf43b28c601dd'
+  quote: "The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.",
+  author: 'Bill Gates',
+  id: '5ebbf5688c0bf43b28c6025b'
 }
 
 
