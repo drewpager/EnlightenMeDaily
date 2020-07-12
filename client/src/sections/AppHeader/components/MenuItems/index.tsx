@@ -43,6 +43,11 @@ export const MenuItems = ({ viewer, setViewer }: Props) => {
           Profile
         </Link>
       </Item>
+      <Item key="/create">
+        <Link to="/create">
+          Create
+        </Link>
+      </Item>
       <Item key="/logout">
         <div onClick={handleLogOut}>
           Logout
